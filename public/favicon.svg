@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <rect width="200" height="200" fill="#000000"/>
+  
+  <!-- Logo Symbol Only -->
+  <g transform="translate(100, 60)">
+    <!-- Top A -->
+    <path d="M -30 0 L 0 -35 L 30 0" stroke="white" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <!-- Curly Braces -->
+    <path d="M -45 10 Q -55 10 -55 20 L -55 35 Q -55 45 -45 45" stroke="white" stroke-width="10" fill="none" stroke-linecap="round"/>
+    <path d="M 45 10 Q 55 10 55 20 L 55 35 Q 55 45 45 45" stroke="white" stroke-width="10" fill="none" stroke-linecap="round"/>
+    
+    <!-- Hash Symbol -->
+    <g transform="translate(0, 28)">
+      <line x1="-18" y1="-10" x2="-12" y2="15" stroke="white" stroke-width="8" stroke-linecap="round"/>
+      <line x1="12" y1="-10" x2="18" y2="15" stroke="white" stroke-width="8" stroke-linecap="round"/>
+      <line x1="-20" y1="-3" x2="20" y2="-3" stroke="white" stroke-width="8" stroke-linecap="round"/>
+      <line x1="-20" y1="8" x2="20" y2="8" stroke="white" stroke-width="8" stroke-linecap="round"/>
+    </g>
+  </g>
+  
+  <!-- UB text -->
+  <text x="100" y="160" font-family="Arial, sans-serif" font-size="48" font-weight="900" fill="white" text-anchor="middle" letter-spacing="2">
+    UB
+  </text>
+</svg>

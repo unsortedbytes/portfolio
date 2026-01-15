@@ -31,11 +31,13 @@ const Navbar: React.FC = () => {
         <div className="flex items-center justify-between">
           <a
             href="#home"
-            className={`text-2xl font-bold transition-colors ${
+            className={`flex items-center gap-3 text-2xl font-bold transition-colors ${
               isScrolled ? 'text-blue-400' : 'text-white'
             }`}
           >
-            Aditya Kumar
+            <img src="/favicon.svg" alt="Logo" className="w-8 h-8" />
+            <span className="hidden sm:inline">UNSORTEDBYTES</span>
+            <span className="sm:hidden">UB</span>
           </a>
 
           {/* Desktop Navigation */}

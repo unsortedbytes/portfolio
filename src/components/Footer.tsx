@@ -46,7 +46,7 @@ const Footer: React.FC = () => {
         </div>
         
         <div className="mt-6 text-center text-gray-400 text-sm">
-          <p>&copy; 2026 Aditya Kumar. Built with React & Tailwind CSS.</p>
+          <p>&copy; 2026 UNSORTEDBYTES. Built with React & Tailwind CSS.</p>
         </div>
       </div>
     </footer>
