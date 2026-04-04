@@ -414,7 +414,7 @@ const Terminal: React.FC = () => {
                   onChange={(e) => setInput(e.target.value)}
                   onKeyDown={handleKeyDown}
                   className="flex-1 bg-transparent text-green-400 outline-none border-none"
-                  autoFocus
+                  
                   spellCheck={false}
                 />
                 <span className="text-green-400 animate-typing">_</span>
@@ -678,7 +678,6 @@ const TypingTest: React.FC<{ onExit: () => void }> = ({ onExit }) => {
                 onChange={(e) => handleInput(e.target.value)}
                 className="w-full bg-gray-800 text-white px-4 py-3 rounded-lg font-mono outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="Start typing..."
-                autoFocus
               />
             )}
 
