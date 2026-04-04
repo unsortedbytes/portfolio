@@ -41,7 +41,7 @@ const Terminal: React.FC = () => {
                 "  date        - Show current date and time",
                 "  echo <text> - Echo back text",
                 "  github      - Open my GitHub profile",
-                "  linkedin    - Open my LinkedIn profile",
+                "  linkedin    - Open LinkedIn profile",
                 "  email       - Open email client",
                 "  resume      - Download my resume",
                 "  matrix      - Enter the Matrix 😎",
@@ -57,6 +57,16 @@ const Terminal: React.FC = () => {
                 "I'm a passionate developer specializing in backend development",
                 "with Python, FastAPI, and cloud infrastructure. Currently working",
                 "at House of Amber, building scalable enterprise applications.",
+                "",
+            ]);
+        },
+        about: () => {
+            addOutput([
+                "About Aditya Kumar:",
+                "A backend-focused software developer with experience in Python, FastAPI, Rust, and cloud infrastructure.",
+                "Currently working at House of Amber, building scalable enterprise applications.",
+                "",
+                "IIT Kharagpur graduate and a passionate programmer who loves building practical and production-ready systems.",
                 "",
             ]);
         },
@@ -166,17 +176,17 @@ const Terminal: React.FC = () => {
             addOutput([
                 "",
                 "     _       _ _ _",
-                "    / \   __| (_) |_ _   _  __ _",
+                "    / \\   __| (_) |_ _   _  __ _",
                 "   / _ \\ / _` | | __| | | |/ _` |",
                 "  / ___ \\ (_| | | |_| |_| | (_| |",
-                " /_/   \\_\\__,_|_|\__|\__, |\__,_|",
+                " /_/   \\_\\__,_|_|\\__|\\__, |\\__,_|",
                 "                      |___/",
                 "",
                 "  _  __",
                 " | |/ /   _ _ __ ___   __ _ _ __",
-                " | ' / | | | '_ ` _ \\ / _` | '__|",
-                " | . \\ |_| | | | | | | (_| | |",
-                " |_|\\_\\__,_|_| |_| |_|\__,_|_|",
+                " | ' / | | '_ ` _ \\ / _` | '__|",
+                " | . \\ |_| | | | | | (_| | |",
+                " |_|\\_\\__,_|_| |_| |_|\\__,_|_|",
                 "",
                 "💻 Software Developer | IIT Kharagpur",
                 "",
@@ -283,6 +293,36 @@ const Terminal: React.FC = () => {
         },
     };
 
+    const availableCommands = [
+        { name: 'help', description: 'Show available commands' },
+        { name: 'about', description: 'Learn about me' },
+        { name: 'skills', description: 'Show technical skills' },
+        { name: 'projects', description: 'List projects' },
+        { name: 'experience', description: 'Show work experience' },
+        { name: 'contact', description: 'Get contact information' },
+        { name: 'education', description: 'View education details' },
+        { name: 'achievements', description: 'Show achievements' },
+        { name: 'snake', description: 'Start Snake game' },
+        { name: 'clear', description: 'Clear terminal output' },
+        { name: 'ls', description: 'Show command list' },
+        { name: 'whoami', description: 'Display identity' },
+        { name: 'date', description: 'Show current date/time' },
+        { name: 'github', description: 'Open GitHub profile' },
+        { name: 'linkedin', description: 'Open LinkedIn profile' },
+        { name: 'email', description: 'Open email client' },
+        { name: 'resume', description: 'Download resume' },
+        { name: 'matrix', description: 'Show Matrix easter egg' },
+        { name: 'ascii', description: 'Display ASCII art' },
+        { name: 'neofetch', description: 'Show system info' },
+    ];
+
+    const executeCommand = (cmd: string) => {
+        handleCommand(cmd);
+        setInput('');
+        inputRef.current?.focus();
+    };
+
+    const addOutput = (lines: string[]) => {
     const addOutput = (lines: string[]) => {
         const newLines: TerminalLine[] = lines.map((line) => ({
             type: "output" as const,
@@ -401,50 +441,94 @@ const Terminal: React.FC = () => {
                         </div>
 
                         {/* Terminal Body */}
-                        <div
-                            ref={terminalRef}
-                            className="p-4 h-96 overflow-y-auto font-mono text-sm"
-                            onClick={() => inputRef.current?.focus()}
-                        >
-                            {history.map((line, index) => (
-                                <div key={index} className="mb-1">
-                                    {line.type === "command" && (
-                                        <div className="text-cyan-400">
-                                            {line.content}
-                                        </div>
-                                    )}
-                                    {line.type === "output" && (
-                                        <div className="text-green-400">
-                                            {line.content}
-                                        </div>
-                                    )}
-                                    {line.type === "error" && (
-                                        <div className="text-red-400">
-                                            {line.content}
-                                        </div>
-                                    )}
-                                </div>
-                            ))}
-
-                            {/* Input Line */}
-                            <form
-                                onSubmit={handleSubmit}
-                                className="flex items-center mt-2"
+                        <div className="grid lg:grid-cols-[1.9fr_1fr] gap-6">
+                            <div
+                                ref={terminalRef}
+                                className="p-4 h-96 overflow-y-auto font-mono text-sm bg-gray-900 rounded-lg"
+                                onClick={() => inputRef.current?.focus()}
                             >
-                                <span className="text-cyan-400 mr-2">$</span>
-                                <input
-                                    ref={inputRef}
-                                    type="text"
-                                    value={input}
-                                    onChange={(e) => setInput(e.target.value)}
-                                    onKeyDown={handleKeyDown}
-                                    className="flex-1 bg-transparent text-green-400 outline-none border-none"
-                                    spellCheck={false}
-                                />
-                                <span className="text-green-400 animate-typing">
-                                    _
-                                </span>
-                            </form>
+                                {history.map((line, index) => (
+                                    <div key={index} className="mb-1">
+                                        {line.type === "command" && (
+                                            <div className="text-cyan-400">
+                                                {line.content}
+                                            </div>
+                                        )}
+                                        {line.type === "output" && (
+                                            <div className="text-green-400">
+                                                {line.content}
+                                            </div>
+                                        )}
+                                        {line.type === "error" && (
+                                            <div className="text-red-400">
+                                                {line.content}
+                                            </div>
+                                        )}
+                                    </div>
+                                ))}
+
+                                {/* Input Line */}
+                                <form
+                                    onSubmit={handleSubmit}
+                                    className="flex items-center mt-2"
+                                >
+                                    <span className="text-cyan-400 mr-2">$</span>
+                                    <input
+                                        ref={inputRef}
+                                        type="text"
+                                        value={input}
+                                        onChange={(e) => setInput(e.target.value)}
+                                        onKeyDown={handleKeyDown}
+                                        className="flex-1 bg-transparent text-green-400 outline-none border-none"
+                                        spellCheck={false}
+                                    />
+                                    <span className="text-green-400 animate-typing">
+                                        _
+                                    </span>
+                                </form>
+                            </div>
+
+                            <div className="bg-gray-900 rounded-lg border border-gray-800 p-4 h-96 overflow-y-auto">
+                                <div className="flex items-center justify-between mb-4">
+                                    <div>
+                                        <h3 className="text-lg font-semibold text-white">
+                                            Command Box
+                                        </h3>
+                                        <p className="text-sm text-gray-400">
+                                            Click any command to run it instantly.
+                                        </p>
+                                    </div>
+                                    <button
+                                        type="button"
+                                        onClick={() => executeCommand('help')}
+                                        className="text-xs text-blue-300 hover:text-blue-100"
+                                    >
+                                        Run help
+                                    </button>
+                                </div>
+                                <div className="grid gap-2">
+                                    {availableCommands.map((command) => (
+                                        <button
+                                            key={command.name}
+                                            type="button"
+                                            onClick={() => executeCommand(command.name)}
+                                            className="w-full text-left rounded-lg border border-gray-700 bg-gray-950/80 px-3 py-2 transition hover:border-blue-500 hover:bg-blue-600/10"
+                                        >
+                                            <div className="flex items-center justify-between">
+                                                <span className="font-medium text-white">
+                                                    {command.name}
+                                                </span>
+                                                <span className="text-xs text-gray-400">
+                                                    Run
+                                                </span>
+                                            </div>
+                                            <p className="mt-1 text-xs text-gray-400">
+                                                {command.description}
+                                            </p>
+                                        </button>
+                                    ))}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
