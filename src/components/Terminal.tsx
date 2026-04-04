@@ -323,7 +323,6 @@ const Terminal: React.FC = () => {
     };
 
     const addOutput = (lines: string[]) => {
-    const addOutput = (lines: string[]) => {
         const newLines: TerminalLine[] = lines.map((line) => ({
             type: "output" as const,
             content: line,
