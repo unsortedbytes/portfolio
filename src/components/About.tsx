@@ -11,7 +11,7 @@ const About: React.FC = () => {
                 <div className="max-w-4xl mx-auto">
                     <div className="bg-gray-900/40 backdrop-blur-xl border border-gray-800/50 rounded-lg p-8 shadow-2xl hover:shadow-blue-500/20 transition duration-500">
                         <p className="text-lg text-gray-300 mb-6">
-                            I'm a passionate Full Stack Developer currently
+                            I'm a passionate Software Developer currently
                             pursuing my B.Tech in Mechanical Engineering at{" "}
                             <span className="font-semibold text-blue-400">
                                 IIT Kharagpur
