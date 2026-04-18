@@ -36,28 +36,28 @@ const EasterEgg: React.FC = () => {
     <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/90 backdrop-blur-sm animate-fade-in">
       <div className="text-center max-w-2xl px-6">
         <div className="text-6xl mb-6 animate-bounce">🎮</div>
-        <h2 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 mb-4">
+        <h2 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-500 to-red-500 mb-4">
           Konami Code Activated!
         </h2>
-        <p className="text-xl text-gray-300 mb-6">
+        <p className="text-xl text-zinc-300 mb-6">
           You found the secret! You're a true gamer and hacker at heart! 🎉
         </p>
-        <div className="bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-400/30 rounded-lg p-6 mb-6">
-          <p className="text-gray-200 mb-4 font-mono text-sm">
+        <div className="bg-gradient-to-r from-amber-500/20 to-orange-500/20 border border-amber-400/30 rounded-lg p-6 mb-6">
+          <p className="text-zinc-200 mb-4 font-mono text-sm">
             "The best way to predict the future is to invent it." - Alan Kay
           </p>
-          <p className="text-gray-400 text-xs">
+          <p className="text-zinc-400 text-xs">
             Secret Code: #DEVELOPER_LIFE_2026
           </p>
         </div>
-        <div className="flex justify-center gap-4 text-sm text-gray-400">
+        <div className="flex justify-center gap-4 text-sm text-zinc-400">
           <span>Easter Egg #1</span>
           <span>|</span>
           <span>Try typing "matrix" in terminal 😉</span>
         </div>
         <button
           onClick={() => setShowSecret(false)}
-          className="mt-6 px-6 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition duration-300"
+          className="mt-6 px-6 py-2 bg-amber-500 hover:bg-amber-600 text-white rounded-lg transition duration-300"
         >
           Close
         </button>

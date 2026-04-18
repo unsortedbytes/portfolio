@@ -40,7 +40,7 @@ const Navbar: React.FC = () => {
         <nav
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
                 isScrolled
-                    ? "bg-gray-900/95 backdrop-blur-sm shadow-lg shadow-blue-500/10 border-b border-gray-800"
+                    ? "bg-zinc-900/95 backdrop-blur-sm shadow-lg shadow-amber-500/10 border-b border-zinc-800"
                     : "bg-transparent"
             }`}
         >
@@ -49,7 +49,7 @@ const Navbar: React.FC = () => {
                     <Link
                         to="/"
                         className={`flex items-center gap-3 text-2xl font-bold transition-colors ${
-                            isScrolled ? "text-blue-400" : "text-white"
+                            isScrolled ? "text-amber-400" : "text-white"
                         }`}
                     >
                         <img
@@ -74,11 +74,11 @@ const Navbar: React.FC = () => {
                                     key={item.name}
                                     to={item.href}
                                     onClick={() => handleNavClick(item.href)}
-                                    className={`font-semibold transition-colors hover:text-blue-400 ${
+                                    className={`font-semibold transition-colors hover:text-amber-400 ${
                                         isScrolled
-                                            ? "text-gray-300"
+                                            ? "text-zinc-300"
                                             : "text-white"
-                                    } ${isActive ? "text-blue-400" : ""}`}
+                                    } ${isActive ? "text-amber-400" : ""}`}
                                 >
                                     {item.name}
                                 </Link>
@@ -87,9 +87,9 @@ const Navbar: React.FC = () => {
                                     key={item.name}
                                     href={item.href}
                                     onClick={() => handleNavClick(item.href)}
-                                    className={`font-semibold transition-colors hover:text-blue-400 ${
+                                    className={`font-semibold transition-colors hover:text-amber-400 ${
                                         isScrolled
-                                            ? "text-gray-300"
+                                            ? "text-zinc-300"
                                             : "text-white"
                                     }`}
                                 >
@@ -137,7 +137,7 @@ const Navbar: React.FC = () => {
                                 <Link
                                     key={item.name}
                                     to={item.href}
-                                    className="block py-2 text-gray-300 hover:text-blue-400 font-semibold"
+                                    className="block py-2 text-zinc-300 hover:text-amber-400 font-semibold"
                                     onClick={() => {
                                         setIsMobileMenuOpen(false);
                                         handleNavClick(item.href);
@@ -149,7 +149,7 @@ const Navbar: React.FC = () => {
                                 <a
                                     key={item.name}
                                     href={item.href}
-                                    className="block py-2 text-gray-300 hover:text-blue-400 font-semibold"
+                                    className="block py-2 text-zinc-300 hover:text-amber-400 font-semibold"
                                     onClick={() => {
                                         setIsMobileMenuOpen(false);
                                         handleNavClick(item.href);

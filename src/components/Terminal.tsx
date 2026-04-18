@@ -420,21 +420,21 @@ const Terminal: React.FC = () => {
     }
 
     return (
-        <section id="terminal" className="py-20 bg-gray-950">
+        <section id="terminal" className="py-20 bg-zinc-950">
             <div className="container mx-auto px-6">
                 <h2 className="text-4xl font-bold text-center text-white mb-12 animate-fade-in">
                     Interactive Terminal
                 </h2>
                 <div className="max-w-4xl mx-auto">
-                    <div className="bg-gray-900 rounded-lg shadow-2xl border border-gray-800 overflow-hidden">
+                    <div className="bg-zinc-900 rounded-lg shadow-2xl border border-zinc-800 overflow-hidden">
                         {/* Terminal Header */}
-                        <div className="bg-gray-900 px-4 py-2 flex items-center border-b border-gray-800">
+                        <div className="bg-zinc-900 px-4 py-2 flex items-center border-b border-zinc-800">
                             <div className="flex space-x-2">
                                 <div className="w-3 h-3 rounded-full bg-red-500"></div>
                                 <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
                                 <div className="w-3 h-3 rounded-full bg-green-500"></div>
                             </div>
-                            <div className="flex-1 text-center text-gray-400 text-sm font-mono">
+                            <div className="flex-1 text-center text-zinc-400 text-sm font-mono">
                                 aditya@portfolio:~
                             </div>
                         </div>
@@ -443,18 +443,18 @@ const Terminal: React.FC = () => {
                         <div className="grid lg:grid-cols-[1.9fr_1fr] gap-6">
                             <div
                                 ref={terminalRef}
-                                className="p-4 h-96 overflow-y-auto font-mono text-sm bg-gray-900 rounded-lg"
+                                className="p-4 h-96 overflow-y-auto font-mono text-sm bg-zinc-900 rounded-lg"
                                 onClick={() => inputRef.current?.focus()}
                             >
                                 {history.map((line, index) => (
                                     <div key={index} className="mb-1">
                                         {line.type === "command" && (
-                                            <div className="text-cyan-400">
+                                            <div className="text-amber-400">
                                                 {line.content}
                                             </div>
                                         )}
                                         {line.type === "output" && (
-                                            <div className="text-green-400">
+                                            <div className="text-zinc-300">
                                                 {line.content}
                                             </div>
                                         )}
@@ -471,38 +471,37 @@ const Terminal: React.FC = () => {
                                     onSubmit={handleSubmit}
                                     className="flex items-center mt-2"
                                 >
-                                    <span className="text-cyan-400 mr-2">$</span>
+                                    <span className="text-amber-400 mr-2">$</span>
                                     <input
                                         ref={inputRef}
                                         type="text"
                                         value={input}
                                         onChange={(e) => setInput(e.target.value)}
                                         onKeyDown={handleKeyDown}
-                                        className="flex-1 bg-transparent text-green-400 outline-none border-none"
+                                        className="flex-1 bg-transparent text-zinc-300 outline-none border-none"
                                         spellCheck={false}
                                     />
-                                    <span className="text-green-400 animate-typing">
+                                    <span className="text-zinc-300 animate-typing">
                                         _
                                     </span>
                                 </form>
                             </div>
 
-                            <div className="bg-gray-900 rounded-lg border border-gray-800 p-4 h-96 overflow-y-auto">
+                            <div className="bg-zinc-900 rounded-lg border border-zinc-800 p-4 h-96 overflow-y-auto">
                                 <div className="flex items-center justify-between mb-4">
                                     <div>
                                         <h3 className="text-lg font-semibold text-white">
                                             Command Box
                                         </h3>
-                                        <p className="text-sm text-gray-400">
+                                        <p className="text-sm text-zinc-400">
                                             Click any command to run it instantly.
                                         </p>
                                     </div>
                                     <button
                                         type="button"
                                         onClick={() => executeCommand('help')}
-                                        className="text-xs text-blue-300 hover:text-blue-100"
-                                    >
-                                        Run help
+                                        className="text-xs text-amber-300 hover:text-amber-100"
+                                    >                                        Run help
                                     </button>
                                 </div>
                                 <div className="grid gap-2">
@@ -511,17 +510,17 @@ const Terminal: React.FC = () => {
                                             key={command.name}
                                             type="button"
                                             onClick={() => executeCommand(command.name)}
-                                            className="w-full text-left rounded-lg border border-gray-700 bg-gray-950/80 px-3 py-2 transition hover:border-blue-500 hover:bg-blue-600/10"
+                                            className="w-full text-left rounded-lg border border-zinc-700 bg-zinc-950/80 px-3 py-2 transition hover:border-amber-500 hover:bg-amber-600/10"
                                         >
                                             <div className="flex items-center justify-between">
                                                 <span className="font-medium text-white">
                                                     {command.name}
                                                 </span>
-                                                <span className="text-xs text-gray-400">
+                                                <span className="text-xs text-zinc-400">
                                                     Run
                                                 </span>
                                             </div>
-                                            <p className="mt-1 text-xs text-gray-400">
+                                            <p className="mt-1 text-xs text-zinc-400">
                                                 {command.description}
                                             </p>
                                         </button>
@@ -643,7 +642,7 @@ const SnakeGame: React.FC<{ onExit: () => void }> = ({ onExit }) => {
 
             // Draw snake
             snake.forEach((segment, index) => {
-                ctx.fillStyle = index === 0 ? "#60a5fa" : "#3b82f6";
+                ctx.fillStyle = index === 0 ? "#fbbf24" : "#f59e0b";
                 ctx.fillRect(
                     segment.x * gridSize + 1,
                     segment.y * gridSize + 1,
@@ -653,7 +652,7 @@ const SnakeGame: React.FC<{ onExit: () => void }> = ({ onExit }) => {
             });
 
             // Draw food
-            ctx.fillStyle = "#00ff00";
+            ctx.fillStyle = "#f97316";
             ctx.fillRect(
                 food.x * gridSize + 1,
                 food.y * gridSize + 1,
@@ -671,14 +670,14 @@ const SnakeGame: React.FC<{ onExit: () => void }> = ({ onExit }) => {
     return (
         <section
             id="snake-game"
-            className="py-20 bg-gray-950 min-h-screen flex items-center justify-center"
+            className="py-20 bg-zinc-950 min-h-screen flex items-center justify-center"
         >
             <div className="text-center">
                 <h2 className="text-4xl font-bold text-white mb-4">
                     Snake Game
                 </h2>
                 <div className="mb-4">
-                    <span className="text-xl text-blue-400 font-mono">
+                    <span className="text-xl text-amber-400 font-mono">
                         Score: {score}
                     </span>
                 </div>
@@ -688,7 +687,7 @@ const SnakeGame: React.FC<{ onExit: () => void }> = ({ onExit }) => {
                     height={400}
                     className="border-2 border-primary rounded-lg mx-auto shadow-2xl"
                 />
-                <div className="mt-6 text-gray-400">
+                <div className="mt-6 text-zinc-400">
                     {gameOver ? (
                         <div>
                             <p className="text-2xl text-red-400 mb-4">
@@ -701,7 +700,7 @@ const SnakeGame: React.FC<{ onExit: () => void }> = ({ onExit }) => {
                     )}
                     <button
                         onClick={onExit}
-                        className="mt-4 px-6 py-2 bg-blue-500 text-dark-bg rounded-lg font-semibold hover:bg-blue-600 transition duration-300"
+                        className="mt-4 px-6 py-2 bg-amber-500 text-dark-bg rounded-lg font-semibold hover:bg-amber-600 transition duration-300"
                     >
                         Back to Terminal
                     </button>
@@ -777,7 +776,7 @@ const TypingTest: React.FC<{ onExit: () => void }> = ({ onExit }) => {
     };
 
     return (
-        <section className="py-20 bg-gray-950 min-h-screen flex items-center justify-center">
+        <section className="py-20 bg-zinc-950 min-h-screen flex items-center justify-center">
             <div className="max-w-4xl w-full px-6">
                 <h2 className="text-4xl font-bold text-white mb-8 text-center">
                     ⚡ Typing Speed Test
@@ -785,12 +784,12 @@ const TypingTest: React.FC<{ onExit: () => void }> = ({ onExit }) => {
 
                 {!started ? (
                     <div className="text-center">
-                        <p className="text-gray-300 mb-6">
+                        <p className="text-zinc-300 mb-6">
                             Test your typing speed and accuracy!
                         </p>
                         <button
                             onClick={startTest}
-                            className="px-8 py-3 bg-blue-500 text-white rounded-lg font-semibold hover:bg-blue-600 transition duration-300"
+                            className="px-8 py-3 bg-amber-500 text-white rounded-lg font-semibold hover:bg-amber-600 transition duration-300"
                         >
                             Start Test
                         </button>
@@ -798,16 +797,16 @@ const TypingTest: React.FC<{ onExit: () => void }> = ({ onExit }) => {
                 ) : (
                     <div>
                         {/* Text to type */}
-                        <div className="bg-gray-800 rounded-lg p-6 mb-6 font-mono text-lg">
+                        <div className="bg-zinc-800 rounded-lg p-6 mb-6 font-mono text-lg">
                             {currentText.split("").map((char, index) => {
-                                let color = "text-gray-400";
+                                let color = "text-zinc-400";
                                 if (index < userInput.length) {
                                     color =
                                         userInput[index] === char
-                                            ? "text-green-400"
+                                            ? "text-amber-400"
                                             : "text-red-400 bg-red-900/30";
                                 } else if (index === userInput.length) {
-                                    color = "text-white bg-blue-500/50";
+                                    color = "text-white bg-amber-500/50";
                                 }
                                 return (
                                     <span key={index} className={color}>
@@ -824,27 +823,27 @@ const TypingTest: React.FC<{ onExit: () => void }> = ({ onExit }) => {
                                 type="text"
                                 value={userInput}
                                 onChange={(e) => handleInput(e.target.value)}
-                                className="w-full bg-gray-800 text-white px-4 py-3 rounded-lg font-mono outline-none focus:ring-2 focus:ring-blue-500"
+                                className="w-full bg-zinc-800 text-white px-4 py-3 rounded-lg font-mono outline-none focus:ring-2 focus:ring-amber-500"
                                 placeholder="Start typing..."
                             />
                         )}
 
                         {/* Stats */}
                         <div className="mt-6 grid grid-cols-2 gap-4">
-                            <div className="bg-gray-800/50 rounded-lg p-4 text-center">
-                                <p className="text-gray-400 text-sm mb-1">
+                            <div className="bg-zinc-800/50 rounded-lg p-4 text-center">
+                                <p className="text-zinc-400 text-sm mb-1">
                                     Accuracy
                                 </p>
-                                <p className="text-3xl font-bold text-blue-400">
+                                <p className="text-3xl font-bold text-amber-400">
                                     {accuracy}%
                                 </p>
                             </div>
                             {finished && (
-                                <div className="bg-gray-800/50 rounded-lg p-4 text-center">
-                                    <p className="text-gray-400 text-sm mb-1">
+                                <div className="bg-zinc-800/50 rounded-lg p-4 text-center">
+                                    <p className="text-zinc-400 text-sm mb-1">
                                         WPM
                                     </p>
-                                    <p className="text-3xl font-bold text-green-400">
+                                    <p className="text-3xl font-bold text-amber-400">
                                         {wpm}
                                     </p>
                                 </div>
@@ -853,19 +852,19 @@ const TypingTest: React.FC<{ onExit: () => void }> = ({ onExit }) => {
 
                         {finished && (
                             <div className="mt-6 text-center">
-                                <p className="text-2xl text-green-400 mb-4">
+                                <p className="text-2xl text-amber-400 mb-4">
                                     ✨ Test Complete!
                                 </p>
                                 <div className="flex gap-4 justify-center">
                                     <button
                                         onClick={reset}
-                                        className="px-6 py-2 bg-blue-500 text-white rounded-lg font-semibold hover:bg-blue-600 transition duration-300"
+                                        className="px-6 py-2 bg-amber-500 text-white rounded-lg font-semibold hover:bg-amber-600 transition duration-300"
                                     >
                                         Try Again
                                     </button>
                                     <button
                                         onClick={onExit}
-                                        className="px-6 py-2 bg-gray-700 text-white rounded-lg font-semibold hover:bg-gray-600 transition duration-300"
+                                        className="px-6 py-2 bg-zinc-700 text-white rounded-lg font-semibold hover:bg-zinc-600 transition duration-300"
                                     >
                                         Back to Terminal
                                     </button>
@@ -879,7 +878,7 @@ const TypingTest: React.FC<{ onExit: () => void }> = ({ onExit }) => {
                     <div className="mt-6 text-center">
                         <button
                             onClick={onExit}
-                            className="text-gray-400 hover:text-white transition duration-300"
+                            className="text-zinc-400 hover:text-white transition duration-300"
                         >
                             Press ESC or click here to exit
                         </button>

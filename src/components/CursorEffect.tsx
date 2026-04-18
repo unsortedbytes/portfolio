@@ -52,7 +52,7 @@ const CursorEffect: React.FC = () => {
           transform: 'translate(-50%, -50%)',
         }}
       >
-        <div className="w-4 h-4 bg-blue-400 rounded-full blur-sm animate-pulse" />
+        <div className="w-4 h-4 bg-amber-400 rounded-full blur-sm animate-pulse" />
       </div>
 
       {/* Particle trail */}
@@ -68,7 +68,7 @@ const CursorEffect: React.FC = () => {
           }}
         >
           <div
-            className="bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full blur-sm"
+            className="bg-gradient-to-r from-amber-400 to-orange-400 rounded-full blur-sm"
             style={{
               width: particle.size,
               height: particle.size,

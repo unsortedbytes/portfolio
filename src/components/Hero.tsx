@@ -19,11 +19,11 @@ const Hero: React.FC = () => {
     return (
         <section
             id="home"
-            className="min-h-screen flex items-center justify-center bg-gradient-to-br from-dark-bg via-gray-900 to-dark-bg relative overflow-hidden"
+            className="min-h-screen flex items-center justify-center bg-gradient-to-br from-dark-bg via-zinc-900 to-dark-bg relative overflow-hidden"
         >
             {/* Animated background elements */}
             <div className="absolute inset-0 overflow-hidden">
-                <div className="absolute -top-1/2 -left-1/2 w-96 h-96 bg-blue-500 opacity-10 rounded-full blur-3xl animate-pulse"></div>
+                <div className="absolute -top-1/2 -left-1/2 w-96 h-96 bg-amber-500 opacity-10 rounded-full blur-3xl animate-pulse"></div>
                 <div
                     className="absolute -bottom-1/2 -right-1/2 w-96 h-96 bg-secondary opacity-10 rounded-full blur-3xl animate-pulse"
                     style={{ animationDelay: "1s" }}
@@ -34,17 +34,17 @@ const Hero: React.FC = () => {
                 <div className="animate-fade-in">
                     <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 animate-slide-down">
                         Hi, I'm{" "}
-                        <span className="text-blue-400 animate-glow">
+                        <span className="text-amber-400 animate-glow">
                             Aditya Kumar
                         </span>
                     </h1>
-                    <div className="text-xl md:text-2xl text-gray-300 mb-8 animate-slide-up h-8 flex items-center justify-center">
+                    <div className="text-xl md:text-2xl text-zinc-300 mb-8 animate-slide-up h-8 flex items-center justify-center">
                         <span className="font-mono">{typingText}</span>
-                        <span className="animate-pulse text-blue-400 ml-1">
+                        <span className="animate-pulse text-amber-400 ml-1">
                             |
                         </span>
                     </div>
-                    <p className="text-lg text-gray-400 max-w-2xl mx-auto mb-10">
+                    <p className="text-lg text-zinc-400 max-w-2xl mx-auto mb-10">
                         Building scalable applications with modern technologies.
                         Currently working at House of Amber, specializing in
                         backend development with Python, FastAPI, and cloud
@@ -53,14 +53,14 @@ const Hero: React.FC = () => {
                     <div className="flex flex-wrap justify-center gap-4">
                         <a
                             href="#projects"
-                            className="bg-blue-500 text-gray-950 px-8 py-3 rounded-lg font-semibold hover:bg-blue-600 transition duration-300 shadow-lg hover:shadow-blue-500/50 transform hover:scale-105"
+                            className="bg-amber-500 text-zinc-950 px-8 py-3 rounded-lg font-semibold hover:bg-amber-600 transition duration-300 shadow-lg hover:shadow-amber-500/50 transform hover:scale-105"
                         >
                             View My Work
                         </a>
                         <a
                             href="/Aditya_Kumar_Resume.pdf"
                             download
-                            className="bg-green-500 text-gray-950 px-8 py-3 rounded-lg font-semibold hover:bg-green-600 transition duration-300 shadow-lg hover:shadow-green-500/50 transform hover:scale-105 flex items-center gap-2"
+                            className="bg-orange-500 text-zinc-950 px-8 py-3 rounded-lg font-semibold hover:bg-orange-600 transition duration-300 shadow-lg hover:shadow-orange-500/50 transform hover:scale-105 flex items-center gap-2"
                         >
                             <svg
                                 className="w-5 h-5"
@@ -79,7 +79,7 @@ const Hero: React.FC = () => {
                         </a>
                         <a
                             href="#terminal"
-                            className="bg-transparent text-blue-400 px-8 py-3 rounded-lg font-semibold hover:bg-blue-500/10 transition duration-300 shadow-lg border-2 border-blue-400 transform hover:scale-105"
+                            className="bg-transparent text-amber-400 px-8 py-3 rounded-lg font-semibold hover:bg-amber-500/10 transition duration-300 shadow-lg border-2 border-amber-400 transform hover:scale-105"
                         >
                             Try Terminal
                         </a>
@@ -89,7 +89,7 @@ const Hero: React.FC = () => {
                             href="https://github.com/unsortedbytes"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-gray-400 hover:text-blue-400 transition duration-300 transform hover:scale-110"
+                            className="text-zinc-400 hover:text-amber-400 transition duration-300 transform hover:scale-110"
                         >
                             <svg
                                 className="w-8 h-8"
@@ -103,7 +103,7 @@ const Hero: React.FC = () => {
                             href="https://www.linkedin.com/in/aditya-kumar-b7b79b22b/"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-gray-400 hover:text-blue-400 transition duration-300 transform hover:scale-110"
+                            className="text-zinc-400 hover:text-amber-400 transition duration-300 transform hover:scale-110"
                         >
                             <svg
                                 className="w-8 h-8"
@@ -115,7 +115,7 @@ const Hero: React.FC = () => {
                         </a>
                         <a
                             href="mailto:adi.bytes@gmail.com"
-                            className="text-gray-400 hover:text-blue-400 transition duration-300 transform hover:scale-110"
+                            className="text-zinc-400 hover:text-amber-400 transition duration-300 transform hover:scale-110"
                         >
                             <svg
                                 className="w-8 h-8"

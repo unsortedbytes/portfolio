@@ -2,12 +2,12 @@ import React from "react";
 
 const Footer: React.FC = () => {
     return (
-        <footer className="bg-gray-900 text-white py-8">
+        <footer className="bg-zinc-900 text-white py-8">
             <div className="container mx-auto px-6">
                 <div className="flex flex-col md:flex-row justify-between items-center">
                     <div className="mb-4 md:mb-0">
                         <p className="text-lg font-semibold">Aditya Kumar</p>
-                        <p className="text-gray-400 text-sm">
+                        <p className="text-zinc-400 text-sm">
                             Software Developer | IIT Kharagpur
                         </p>
                     </div>
@@ -17,7 +17,7 @@ const Footer: React.FC = () => {
                             href="https://github.com/unsortedbytes"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-gray-400 hover:text-white transition duration-300"
+                            className="text-zinc-400 hover:text-white transition duration-300"
                             aria-label="GitHub"
                         >
                             <svg
@@ -32,7 +32,7 @@ const Footer: React.FC = () => {
                             href="https://www.linkedin.com/in/aditya-kumar-b7b79b22b/"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-gray-400 hover:text-white transition duration-300"
+                            className="text-zinc-400 hover:text-white transition duration-300"
                             aria-label="LinkedIn"
                         >
                             <svg
@@ -45,7 +45,7 @@ const Footer: React.FC = () => {
                         </a>
                         <a
                             href="mailto:adi.bytes@gmail.com"
-                            className="text-gray-400 hover:text-white transition duration-300"
+                            className="text-zinc-400 hover:text-white transition duration-300"
                             aria-label="Email"
                         >
                             <svg
@@ -65,7 +65,7 @@ const Footer: React.FC = () => {
                     </div>
                 </div>
 
-                <div className="mt-6 text-center text-gray-400 text-sm">
+                <div className="mt-6 text-center text-zinc-400 text-sm">
                     <p>
                         &copy; 2026 UNSORTEDBYTES. Built with React & Tailwind
                         CSS.

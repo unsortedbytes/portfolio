@@ -8,7 +8,7 @@ import Navbar from "./components/Navbar";
 
 function App() {
     return (
-        <div className="min-h-screen bg-gray-950 relative overflow-hidden">
+        <div className="min-h-screen bg-zinc-950 relative overflow-hidden">
             <MatrixRain />
             <CursorEffect />
             <EasterEgg />

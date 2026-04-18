@@ -45,7 +45,7 @@ const Experience: React.FC = () => {
     ];
 
     return (
-        <section id="experience" className="py-20 bg-gray-950">
+        <section id="experience" className="py-20 bg-zinc-950">
             <div className="container mx-auto px-6">
                 <h2 className="text-4xl font-bold text-center text-white mb-12">
                     Experience
@@ -54,25 +54,25 @@ const Experience: React.FC = () => {
                     {experiences.map((exp, index) => (
                         <div
                             key={index}
-                            className="bg-gray-900 rounded-lg shadow-lg p-6 hover:shadow-xl transition duration-300"
+                            className="bg-zinc-900 rounded-lg shadow-lg p-6 hover:shadow-xl transition duration-300"
                         >
                             <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
                                 <div>
                                     <h3 className="text-2xl font-bold text-white">
                                         {exp.title}
                                     </h3>
-                                    <p className="text-lg text-blue-400 font-semibold">
+                                    <p className="text-lg text-amber-400 font-semibold">
                                         {exp.company}
                                     </p>
-                                    <p className="text-sm text-gray-400 mt-1">
+                                    <p className="text-sm text-zinc-400 mt-1">
                                         {exp.location}
                                     </p>
                                 </div>
                                 <div className="mt-2 md:mt-0">
-                                    <span className="inline-block bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                                    <span className="inline-block bg-amber-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
                                         {exp.type}
                                     </span>
-                                    <p className="text-gray-300 text-sm mt-1">
+                                    <p className="text-zinc-300 text-sm mt-1">
                                         {exp.period}
                                     </p>
                                 </div>
@@ -80,10 +80,10 @@ const Experience: React.FC = () => {
                             <ul className="space-y-2 mb-4">
                                 {exp.description.map((item, i) => (
                                     <li key={i} className="flex items-start">
-                                        <span className="text-blue-400 mr-2">
+                                        <span className="text-amber-400 mr-2">
                                             ▹
                                         </span>
-                                        <span className="text-gray-200">
+                                        <span className="text-zinc-200">
                                             {item}
                                         </span>
                                     </li>
@@ -93,7 +93,7 @@ const Experience: React.FC = () => {
                                 {exp.tags.map((tag, i) => (
                                     <span
                                         key={i}
-                                        className="bg-blue-500/20 text-blue-300 border border-blue-500/30 px-3 py-1 rounded-md text-sm font-medium"
+                                        className="bg-amber-500/20 text-amber-300 border border-amber-500/30 px-3 py-1 rounded-md text-sm font-medium"
                                     >
                                         {tag}
                                     </span>

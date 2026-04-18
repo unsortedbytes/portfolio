@@ -60,14 +60,14 @@ const ProjectsPage: React.FC = () => {
     };
 
     return (
-        <div className="min-h-screen py-20 bg-gray-900">
+        <div className="min-h-screen py-20 bg-zinc-900">
             <div className="container mx-auto px-6">
                 {/* Header Section */}
                 <div className="text-center mb-16">
                     <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
                         Live Projects
                     </h1>
-                    <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+                    <p className="text-zinc-400 text-lg max-w-2xl mx-auto">
                         Explore my live projects hosted on unsortedbytes.in.
                         Click on any project to view it in action.
                     </p>
@@ -78,11 +78,11 @@ const ProjectsPage: React.FC = () => {
                     {liveProjects.map((project) => (
                         <div
                             key={project.id}
-                            className="group relative bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl hover:border-blue-500/50 transition-all duration-300 cursor-pointer flex flex-col"
+                            className="group relative bg-zinc-800/50 backdrop-blur-sm border border-zinc-700 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl hover:border-amber-500/50 transition-all duration-300 cursor-pointer flex flex-col"
                             onClick={() => handleProjectClick(project.liveUrl)}
                         >
                             {/* Project Image Placeholder */}
-                            <div className="w-full h-40 bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center overflow-hidden relative group-hover:scale-105 transition-transform duration-300">
+                            <div className="w-full h-40 bg-gradient-to-br from-amber-500/20 to-orange-500/20 flex items-center justify-center overflow-hidden relative group-hover:scale-105 transition-transform duration-300">
                                 {project.image ? (
                                     <img
                                         src={project.image}
@@ -92,7 +92,7 @@ const ProjectsPage: React.FC = () => {
                                 ) : (
                                     <div className="text-center">
                                         <svg
-                                            className="w-16 h-16 text-blue-400 mx-auto mb-2"
+                                            className="w-16 h-16 text-amber-400 mx-auto mb-2"
                                             fill="none"
                                             stroke="currentColor"
                                             viewBox="0 0 24 24"
@@ -104,7 +104,7 @@ const ProjectsPage: React.FC = () => {
                                                 d="M10 20l4-16m4 4l4 4m0 6l-4 4m-4-4l-4-4m4 4a2 2 0 110-4 2 2 0 010 4z"
                                             />
                                         </svg>
-                                        <p className="text-gray-400 text-sm">
+                                        <p className="text-zinc-400 text-sm">
                                             Preview
                                         </p>
                                     </div>
@@ -114,16 +114,16 @@ const ProjectsPage: React.FC = () => {
                             {/* Project Content */}
                             <div className="p-6 flex-1 flex flex-col">
                                 <div className="mb-3">
-                                    <span className="text-xs text-blue-400 bg-blue-500/20 border border-blue-500/30 px-3 py-1 rounded-full">
+                                    <span className="text-xs text-amber-400 bg-amber-500/20 border border-amber-500/30 px-3 py-1 rounded-full">
                                         {project.category}
                                     </span>
                                 </div>
 
-                                <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">
+                                <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-amber-400 transition-colors">
                                     {project.title}
                                 </h3>
 
-                                <p className="text-gray-400 mb-4 flex-grow">
+                                <p className="text-zinc-400 mb-4 flex-grow">
                                     {project.description}
                                 </p>
 
@@ -132,7 +132,7 @@ const ProjectsPage: React.FC = () => {
                                     {project.tags.map((tag, i) => (
                                         <span
                                             key={i}
-                                            className="bg-gray-700/50 text-gray-300 px-2 py-1 rounded text-xs font-medium"
+                                            className="bg-zinc-700/50 text-zinc-300 px-2 py-1 rounded text-xs font-medium"
                                         >
                                             {tag}
                                         </span>
@@ -145,7 +145,7 @@ const ProjectsPage: React.FC = () => {
                                         e.stopPropagation();
                                         handleProjectClick(project.liveUrl);
                                     }}
-                                    className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2"
+                                    className="w-full bg-amber-600 hover:bg-amber-700 text-white font-bold py-3 px-4 rounded-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2"
                                 >
                                     <span>View Project</span>
                                     <svg
@@ -165,26 +165,26 @@ const ProjectsPage: React.FC = () => {
                             </div>
 
                             {/* Hover Overlay Indicator */}
-                            <div className="absolute inset-0 bg-blue-500/5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                            <div className="absolute inset-0 bg-amber-500/5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                         </div>
                     ))}
                 </div>
 
                 {/* Info Section */}
-                <div className="max-w-4xl mx-auto bg-gray-800/30 border border-gray-700 rounded-lg p-8 text-center mb-16">
+                <div className="max-w-4xl mx-auto bg-zinc-800/30 border border-zinc-700 rounded-lg p-8 text-center mb-16">
                     <h2 className="text-2xl font-bold text-white mb-4">
                         How to customize this page?
                     </h2>
-                    <p className="text-gray-400 mb-4">
+                    <p className="text-zinc-400 mb-4">
                         Edit the{" "}
-                        <code className="bg-gray-900 px-2 py-1 rounded text-blue-400">
+                        <code className="bg-zinc-900 px-2 py-1 rounded text-amber-400">
                             liveProjects
                         </code>{" "}
                         array in the ProjectsPage component to add your own live
                         projects. Update the URLs, titles, descriptions, and
                         tags to match your actual projects.
                     </p>
-                    <p className="text-gray-500 text-sm">
+                    <p className="text-zinc-500 text-sm">
                         Each project card is clickable and will open your live
                         project in a new tab.
                     </p>

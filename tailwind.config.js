@@ -27,8 +27,8 @@ export default {
           '100%': { transform: 'translateY(0)', opacity: '1' },
         },
         glow: {
-          '0%, 100%': { boxShadow: '0 0 20px rgba(96, 165, 250, 0.5)' },
-          '50%': { boxShadow: '0 0 30px rgba(96, 165, 250, 0.8)' },
+          '0%, 100%': { boxShadow: '0 0 20px rgba(245, 158, 11, 0.5)' },
+          '50%': { boxShadow: '0 0 30px rgba(245, 158, 11, 0.8)' },
         },
         typing: {
           '0%, 100%': { opacity: '1' },
