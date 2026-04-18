@@ -421,154 +421,164 @@ const Terminal: React.FC = () => {
 
     return (
         <section id="terminal" className="py-24 bg-zinc-950 relative overflow-hidden">
-            {/* Background decorative elements */}
-            <div className="absolute top-0 left-1/4 w-96 h-96 bg-amber-500/5 rounded-full blur-[120px] pointer-events-none" />
-            <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-orange-500/5 rounded-full blur-[120px] pointer-events-none" />
+            {/* Ambient Background Glow */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-amber-600/5 rounded-full blur-[160px] pointer-events-none" />
 
             <div className="container mx-auto px-6 relative z-10">
                 <div className="text-center mb-16">
-                    <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
-                        Interactive <span className="text-amber-500">Workspace</span>
+                    <h2 className="text-4xl md:text-6xl font-black text-white mb-6 tracking-tighter uppercase italic">
+                        The <span className="text-amber-500">Dev</span> Log
                     </h2>
-                    <p className="text-zinc-400 max-w-xl mx-auto">
-                        Explore my world through an interactive terminal or use the reference guide to quickly navigate.
-                    </p>
+                    <div className="h-1 w-24 bg-amber-500 mx-auto rounded-full" />
                 </div>
 
-                <div className="flex flex-col lg:flex-row gap-12 items-stretch max-w-6xl mx-auto">
-                    {/* Terminal Window */}
-                    <div className="flex-1 min-w-0">
-                        <div className="bg-zinc-900 rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-zinc-800 overflow-hidden h-full flex flex-col transform hover:scale-[1.01] transition-transform duration-500">
-                            {/* Terminal Header */}
-                            <div className="bg-zinc-800/50 px-4 py-3 flex items-center justify-between border-b border-zinc-800">
-                                <div className="flex space-x-2">
-                                    <div className="w-3 h-3 rounded-full bg-red-500/80 shadow-[0_0_10px_rgba(239,68,68,0.3)]"></div>
-                                    <div className="w-3 h-3 rounded-full bg-amber-500/80 shadow-[0_0_10px_rgba(245,158,11,0.3)]"></div>
-                                    <div className="w-3 h-3 rounded-full bg-emerald-500/80 shadow-[0_0_10px_rgba(16,185,129,0.3)]"></div>
-                                </div>
-                                <div className="text-zinc-400 text-xs font-mono flex items-center gap-2">
-                                    <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                                    </svg>
-                                    aditya@portfolio:~
-                                </div>
-                                <div className="w-12"></div> {/* Spacer */}
-                            </div>
-
-                            {/* Terminal Body */}
-                            <div
-                                ref={terminalRef}
-                                className="p-6 h-[500px] overflow-y-auto font-mono text-sm sm:text-base leading-relaxed bg-black/20 backdrop-blur-sm scrollbar-thin scrollbar-thumb-amber-500/20 scrollbar-track-transparent"
-                                onClick={() => inputRef.current?.focus()}
-                            >
-                                <div className="opacity-50 text-xs mb-4 border-b border-zinc-800/50 pb-2">
-                                    Last login: {new Date().toLocaleDateString()} on ttys001
-                                </div>
-                                {history.map((line, index) => (
-                                    <div key={index} className="mb-2 break-words">
-                                        {line.type === "command" && (
-                                            <div className="flex items-center gap-2">
-                                                <span className="text-amber-500 font-bold">➜</span>
-                                                <span className="text-zinc-400">~</span>
-                                                <span className="text-amber-400">{line.content.replace('$ ', '')}</span>
-                                            </div>
-                                        )}
-                                        {line.type === "output" && (
-                                            <div className="text-zinc-300 ml-5 whitespace-pre-wrap">
-                                                {line.content}
-                                            </div>
-                                        )}
-                                        {line.type === "error" && (
-                                            <div className="text-red-400 ml-5 flex items-center gap-2">
-                                                <span className="text-xs">✖</span> {line.content}
-                                            </div>
-                                        )}
+                {/* The "Notebook" Container */}
+                <div className="max-w-6xl mx-auto relative">
+                    {/* Notebook Shadow/Depth */}
+                    <div className="absolute inset-0 bg-black/40 translate-x-4 translate-y-4 rounded-3xl blur-2xl" />
+                    
+                    <div className="relative bg-zinc-900 rounded-3xl border border-zinc-800 overflow-hidden flex flex-col lg:flex-row shadow-2xl">
+                        
+                        {/* LEFT PAGE: The Terminal */}
+                        <div className="flex-1 min-w-0 bg-[#0c0c0c] relative">
+                            {/* Page Texture Overlay */}
+                            <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
+                            
+                            <div className="relative h-full flex flex-col">
+                                {/* Terminal Tab/Header */}
+                                <div className="bg-zinc-800/80 backdrop-blur-md px-6 py-4 flex items-center justify-between border-b border-zinc-700/50">
+                                    <div className="flex items-center gap-3">
+                                        <div className="flex space-x-1.5">
+                                            <div className="w-3 h-3 rounded-full bg-zinc-700" />
+                                            <div className="w-3 h-3 rounded-full bg-zinc-700" />
+                                            <div className="w-3 h-3 rounded-full bg-zinc-700" />
+                                        </div>
+                                        <span className="text-[10px] font-mono text-zinc-500 tracking-widest uppercase">Console.Core.v2</span>
                                     </div>
-                                ))}
+                                    <div className="px-2 py-0.5 rounded border border-zinc-700 bg-zinc-900 text-[10px] font-mono text-amber-500/80">
+                                        STABLE_BUILD
+                                    </div>
+                                </div>
 
-                                {/* Input Line */}
-                                <form
-                                    onSubmit={handleSubmit}
-                                    className="flex items-center mt-4 group"
+                                {/* Terminal Content */}
+                                <div
+                                    ref={terminalRef}
+                                    className="p-8 h-[550px] overflow-y-auto font-mono text-sm sm:text-base leading-relaxed scrollbar-thin scrollbar-thumb-amber-500/10 scrollbar-track-transparent"
+                                    onClick={() => inputRef.current?.focus()}
                                 >
-                                    <span className="text-amber-500 font-bold mr-2">➜</span>
-                                    <span className="text-zinc-400 mr-2">~</span>
-                                    <input
-                                        ref={inputRef}
-                                        type="text"
-                                        value={input}
-                                        onChange={(e) => setInput(e.target.value)}
-                                        onKeyDown={handleKeyDown}
-                                        className="flex-1 bg-transparent text-amber-400 outline-none border-none caret-amber-500"
-                                        spellCheck={false}
-                                        autoFocus
-                                    />
-                                </form>
+                                    {history.map((line, index) => (
+                                        <div key={index} className="mb-3 animate-fade-in">
+                                            {line.type === "command" && (
+                                                <div className="flex items-start gap-3">
+                                                    <span className="text-amber-500 font-black mt-1">»</span>
+                                                    <span className="text-zinc-100 bg-zinc-800/50 px-2 py-0.5 rounded text-sm">
+                                                        {line.content.replace('$ ', '')}
+                                                    </span>
+                                                </div>
+                                            )}
+                                            {line.type === "output" && (
+                                                <div className="text-zinc-400 ml-7 py-1 leading-relaxed border-l border-zinc-800/50 pl-4">
+                                                    {line.content}
+                                                </div>
+                                            )}
+                                            {line.type === "error" && (
+                                                <div className="text-red-500/90 ml-7 flex items-center gap-2 italic bg-red-500/5 p-2 rounded border border-red-500/10">
+                                                    <span className="not-italic">⚠️</span> {line.content}
+                                                </div>
+                                            )}
+                                        </div>
+                                    ))}
+
+                                    {/* Active Input Line */}
+                                    <form onSubmit={handleSubmit} className="flex items-center gap-3 mt-6">
+                                        <span className="text-amber-500 font-black animate-pulse">»</span>
+                                        <div className="flex-1 flex items-center gap-2">
+                                            <input
+                                                ref={inputRef}
+                                                type="text"
+                                                value={input}
+                                                onChange={(e) => setInput(e.target.value)}
+                                                onKeyDown={handleKeyDown}
+                                                className="flex-1 bg-transparent text-amber-400 outline-none border-none caret-amber-500 font-bold"
+                                                spellCheck={false}
+                                                autoFocus
+                                                placeholder="type 'help'..."
+                                            />
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    {/* Command Reference Book */}
-                    <div className="lg:w-80 flex-shrink-0">
-                        <div className="relative h-full group">
-                            {/* Book Spine Shadow Effect */}
-                            <div className="absolute -left-1 top-4 bottom-4 w-2 bg-zinc-800 rounded-l-md z-20 shadow-xl border-r border-zinc-700/50"></div>
+                        {/* CENTER BINDING EFFECT */}
+                        <div className="hidden lg:flex w-12 bg-zinc-950 items-center justify-center relative shadow-inner">
+                            <div className="absolute inset-y-0 left-0 w-px bg-white/5" />
+                            <div className="absolute inset-y-0 right-0 w-px bg-black/50" />
+                            <div className="flex flex-col gap-8">
+                                {[...Array(10)].map((_, i) => (
+                                    <div key={i} className="w-6 h-1 bg-zinc-800 rounded-full border-t border-white/5 border-b border-black/40 shadow-xl" />
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* RIGHT PAGE: Command Reference */}
+                        <div className="lg:w-[400px] bg-zinc-900 relative">
+                            {/* Subtle Grid Background */}
+                            <div className="absolute inset-0 opacity-[0.02] pointer-events-none bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:20px_20px]" />
                             
-                            <div className="bg-zinc-900 h-full rounded-r-xl rounded-l-md border border-zinc-800 shadow-2xl overflow-hidden flex flex-col relative">
-                                {/* Book Cover Header */}
-                                <div className="bg-gradient-to-br from-zinc-800 to-zinc-900 p-6 border-b border-zinc-800">
-                                    <div className="flex items-center justify-between mb-2">
-                                        <span className="text-[10px] uppercase tracking-[0.2em] text-amber-500 font-bold">Reference</span>
-                                        <div className="flex gap-1">
-                                            {[1,2,3].map(i => <div key={i} className="w-1 h-1 rounded-full bg-zinc-700"></div>)}
+                            <div className="relative h-full flex flex-col">
+                                {/* Book Header */}
+                                <div className="p-8 border-b border-zinc-800">
+                                    <div className="flex items-center gap-2 mb-4">
+                                        <div className="w-8 h-8 rounded-lg bg-amber-500 flex items-center justify-center shadow-lg shadow-amber-500/20">
+                                            <svg className="w-4 h-4 text-zinc-950" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <h3 className="text-xl font-bold text-white leading-none">Manual</h3>
+                                            <p className="text-[10px] text-zinc-500 uppercase tracking-widest mt-1">Technical Reference</p>
                                         </div>
                                     </div>
-                                    <h3 className="text-xl font-bold text-white mb-1">Command Guide</h3>
-                                    <p className="text-xs text-zinc-500 italic">v2.0 Manual</p>
+                                    
+                                    <div className="flex items-center justify-between text-xs text-zinc-400 bg-zinc-950/50 p-3 rounded-lg border border-zinc-800">
+                                        <span className="font-mono">SYS_CORE_CMDS</span>
+                                        <span className="text-amber-500">20.OBJ</span>
+                                    </div>
                                 </div>
 
-                                {/* Book Pages Content */}
-                                <div className="p-4 flex-1 overflow-y-auto space-y-3 bg-[#121212] custom-scrollbar">
-                                    <div className="flex items-center justify-between px-2 mb-4">
-                                        <span className="text-[10px] text-zinc-500 font-mono">INDEX_OF_COMMANDS</span>
+                                {/* Scrollable Command List */}
+                                <div className="flex-1 overflow-y-auto p-6 space-y-2 custom-scrollbar">
+                                    {availableCommands.map((command) => (
                                         <button
-                                            type="button"
-                                            onClick={() => executeCommand('help')}
-                                            className="text-[10px] text-amber-500 hover:text-amber-400 underline underline-offset-4"
+                                            key={command.name}
+                                            onClick={() => executeCommand(command.name)}
+                                            className="w-full group flex items-start gap-4 p-3 rounded-xl hover:bg-zinc-800 transition-all duration-300 border border-transparent hover:border-zinc-700"
                                         >
-                                            View Help
-                                        </button>
-                                    </div>
-                                    
-                                    <div className="grid gap-2">
-                                        {availableCommands.map((command) => (
-                                            <button
-                                                key={command.name}
-                                                type="button"
-                                                onClick={() => executeCommand(command.name)}
-                                                className="w-full text-left group/item p-3 rounded-lg bg-zinc-800/30 border border-zinc-800 hover:border-amber-500/50 hover:bg-amber-500/5 transition-all duration-300"
-                                            >
-                                                <div className="flex items-center justify-between mb-1">
-                                                    <code className="text-amber-400 font-bold text-sm">
+                                            <div className="mt-1 w-1.5 h-1.5 rounded-full bg-zinc-700 group-hover:bg-amber-500 transition-colors" />
+                                            <div className="flex-1 text-left">
+                                                <div className="flex items-center justify-between">
+                                                    <span className="text-sm font-bold text-zinc-300 group-hover:text-amber-400 transition-colors font-mono tracking-tight">
                                                         {command.name}
-                                                    </code>
-                                                    <svg className="w-3 h-3 text-zinc-600 group-hover/item:text-amber-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                                                    </svg>
+                                                    </span>
+                                                    <kbd className="hidden group-hover:block text-[9px] px-1.5 py-0.5 rounded bg-zinc-700 text-zinc-400 uppercase">Exec</kbd>
                                                 </div>
-                                                <p className="text-[11px] text-zinc-500 line-clamp-1 group-hover/item:text-zinc-400 transition-colors">
+                                                <p className="text-[11px] text-zinc-500 mt-1 leading-snug">
                                                     {command.description}
                                                 </p>
-                                            </button>
-                                        ))}
-                                    </div>
+                                            </div>
+                                        </button>
+                                    ))}
                                 </div>
-                                
-                                {/* Book Footer */}
-                                <div className="p-4 bg-zinc-900 border-t border-zinc-800 text-center">
-                                    <div className="inline-block px-3 py-1 rounded bg-zinc-800 border border-zinc-700 text-[10px] text-zinc-500 font-mono">
-                                        PAGE: 01 / 01
+
+                                {/* Footer / Page Indicator */}
+                                <div className="p-6 bg-zinc-950/30 border-t border-zinc-800 flex items-center justify-between">
+                                    <div className="flex gap-1">
+                                        <div className="w-1.5 h-1.5 rounded-full bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.5)]" />
+                                        <div className="w-1.5 h-1.5 rounded-full bg-zinc-800" />
+                                        <div className="w-1.5 h-1.5 rounded-full bg-zinc-800" />
                                     </div>
+                                    <span className="text-[10px] font-mono text-zinc-500 italic">Authored by Aditya Kumar</span>
                                 </div>
                             </div>
                         </div>
