@@ -420,47 +420,67 @@ const Terminal: React.FC = () => {
     }
 
     return (
-        <section id="terminal" className="py-20 bg-zinc-950">
-            <div className="container mx-auto px-6">
-                <h2 className="text-4xl font-bold text-center text-white mb-12 animate-fade-in">
-                    Interactive Terminal
-                </h2>
-                <div className="max-w-4xl mx-auto">
-                    <div className="bg-zinc-900 rounded-lg shadow-2xl border border-zinc-800 overflow-hidden">
-                        {/* Terminal Header */}
-                        <div className="bg-zinc-900 px-4 py-2 flex items-center border-b border-zinc-800">
-                            <div className="flex space-x-2">
-                                <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                                <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                                <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                            </div>
-                            <div className="flex-1 text-center text-zinc-400 text-sm font-mono">
-                                aditya@portfolio:~
-                            </div>
-                        </div>
+        <section id="terminal" className="py-24 bg-zinc-950 relative overflow-hidden">
+            {/* Background decorative elements */}
+            <div className="absolute top-0 left-1/4 w-96 h-96 bg-amber-500/5 rounded-full blur-[120px] pointer-events-none" />
+            <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-orange-500/5 rounded-full blur-[120px] pointer-events-none" />
 
-                        {/* Terminal Body */}
-                        <div className="grid lg:grid-cols-[1.9fr_1fr] gap-6">
+            <div className="container mx-auto px-6 relative z-10">
+                <div className="text-center mb-16">
+                    <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
+                        Interactive <span className="text-amber-500">Workspace</span>
+                    </h2>
+                    <p className="text-zinc-400 max-w-xl mx-auto">
+                        Explore my world through an interactive terminal or use the reference guide to quickly navigate.
+                    </p>
+                </div>
+
+                <div className="flex flex-col lg:flex-row gap-12 items-stretch max-w-6xl mx-auto">
+                    {/* Terminal Window */}
+                    <div className="flex-1 min-w-0">
+                        <div className="bg-zinc-900 rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-zinc-800 overflow-hidden h-full flex flex-col transform hover:scale-[1.01] transition-transform duration-500">
+                            {/* Terminal Header */}
+                            <div className="bg-zinc-800/50 px-4 py-3 flex items-center justify-between border-b border-zinc-800">
+                                <div className="flex space-x-2">
+                                    <div className="w-3 h-3 rounded-full bg-red-500/80 shadow-[0_0_10px_rgba(239,68,68,0.3)]"></div>
+                                    <div className="w-3 h-3 rounded-full bg-amber-500/80 shadow-[0_0_10px_rgba(245,158,11,0.3)]"></div>
+                                    <div className="w-3 h-3 rounded-full bg-emerald-500/80 shadow-[0_0_10px_rgba(16,185,129,0.3)]"></div>
+                                </div>
+                                <div className="text-zinc-400 text-xs font-mono flex items-center gap-2">
+                                    <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                    </svg>
+                                    aditya@portfolio:~
+                                </div>
+                                <div className="w-12"></div> {/* Spacer */}
+                            </div>
+
+                            {/* Terminal Body */}
                             <div
                                 ref={terminalRef}
-                                className="p-4 h-96 overflow-y-auto font-mono text-sm bg-zinc-900 rounded-lg"
+                                className="p-6 h-[500px] overflow-y-auto font-mono text-sm sm:text-base leading-relaxed bg-black/20 backdrop-blur-sm scrollbar-thin scrollbar-thumb-amber-500/20 scrollbar-track-transparent"
                                 onClick={() => inputRef.current?.focus()}
                             >
+                                <div className="opacity-50 text-xs mb-4 border-b border-zinc-800/50 pb-2">
+                                    Last login: {new Date().toLocaleDateString()} on ttys001
+                                </div>
                                 {history.map((line, index) => (
-                                    <div key={index} className="mb-1">
+                                    <div key={index} className="mb-2 break-words">
                                         {line.type === "command" && (
-                                            <div className="text-amber-400">
-                                                {line.content}
+                                            <div className="flex items-center gap-2">
+                                                <span className="text-amber-500 font-bold">➜</span>
+                                                <span className="text-zinc-400">~</span>
+                                                <span className="text-amber-400">{line.content.replace('$ ', '')}</span>
                                             </div>
                                         )}
                                         {line.type === "output" && (
-                                            <div className="text-zinc-300">
+                                            <div className="text-zinc-300 ml-5 whitespace-pre-wrap">
                                                 {line.content}
                                             </div>
                                         )}
                                         {line.type === "error" && (
-                                            <div className="text-red-400">
-                                                {line.content}
+                                            <div className="text-red-400 ml-5 flex items-center gap-2">
+                                                <span className="text-xs">✖</span> {line.content}
                                             </div>
                                         )}
                                     </div>
@@ -469,62 +489,86 @@ const Terminal: React.FC = () => {
                                 {/* Input Line */}
                                 <form
                                     onSubmit={handleSubmit}
-                                    className="flex items-center mt-2"
+                                    className="flex items-center mt-4 group"
                                 >
-                                    <span className="text-amber-400 mr-2">$</span>
+                                    <span className="text-amber-500 font-bold mr-2">➜</span>
+                                    <span className="text-zinc-400 mr-2">~</span>
                                     <input
                                         ref={inputRef}
                                         type="text"
                                         value={input}
                                         onChange={(e) => setInput(e.target.value)}
                                         onKeyDown={handleKeyDown}
-                                        className="flex-1 bg-transparent text-zinc-300 outline-none border-none"
+                                        className="flex-1 bg-transparent text-amber-400 outline-none border-none caret-amber-500"
                                         spellCheck={false}
+                                        autoFocus
                                     />
-                                    <span className="text-zinc-300 animate-typing">
-                                        _
-                                    </span>
                                 </form>
                             </div>
+                        </div>
+                    </div>
 
-                            <div className="bg-zinc-900 rounded-lg border border-zinc-800 p-4 h-96 overflow-y-auto">
-                                <div className="flex items-center justify-between mb-4">
-                                    <div>
-                                        <h3 className="text-lg font-semibold text-white">
-                                            Command Box
-                                        </h3>
-                                        <p className="text-sm text-zinc-400">
-                                            Click any command to run it instantly.
-                                        </p>
+                    {/* Command Reference Book */}
+                    <div className="lg:w-80 flex-shrink-0">
+                        <div className="relative h-full group">
+                            {/* Book Spine Shadow Effect */}
+                            <div className="absolute -left-1 top-4 bottom-4 w-2 bg-zinc-800 rounded-l-md z-20 shadow-xl border-r border-zinc-700/50"></div>
+                            
+                            <div className="bg-zinc-900 h-full rounded-r-xl rounded-l-md border border-zinc-800 shadow-2xl overflow-hidden flex flex-col relative">
+                                {/* Book Cover Header */}
+                                <div className="bg-gradient-to-br from-zinc-800 to-zinc-900 p-6 border-b border-zinc-800">
+                                    <div className="flex items-center justify-between mb-2">
+                                        <span className="text-[10px] uppercase tracking-[0.2em] text-amber-500 font-bold">Reference</span>
+                                        <div className="flex gap-1">
+                                            {[1,2,3].map(i => <div key={i} className="w-1 h-1 rounded-full bg-zinc-700"></div>)}
+                                        </div>
                                     </div>
-                                    <button
-                                        type="button"
-                                        onClick={() => executeCommand('help')}
-                                        className="text-xs text-amber-300 hover:text-amber-100"
-                                    >                                        Run help
-                                    </button>
+                                    <h3 className="text-xl font-bold text-white mb-1">Command Guide</h3>
+                                    <p className="text-xs text-zinc-500 italic">v2.0 Manual</p>
                                 </div>
-                                <div className="grid gap-2">
-                                    {availableCommands.map((command) => (
+
+                                {/* Book Pages Content */}
+                                <div className="p-4 flex-1 overflow-y-auto space-y-3 bg-[#121212] custom-scrollbar">
+                                    <div className="flex items-center justify-between px-2 mb-4">
+                                        <span className="text-[10px] text-zinc-500 font-mono">INDEX_OF_COMMANDS</span>
                                         <button
-                                            key={command.name}
                                             type="button"
-                                            onClick={() => executeCommand(command.name)}
-                                            className="w-full text-left rounded-lg border border-zinc-700 bg-zinc-950/80 px-3 py-2 transition hover:border-amber-500 hover:bg-amber-600/10"
+                                            onClick={() => executeCommand('help')}
+                                            className="text-[10px] text-amber-500 hover:text-amber-400 underline underline-offset-4"
                                         >
-                                            <div className="flex items-center justify-between">
-                                                <span className="font-medium text-white">
-                                                    {command.name}
-                                                </span>
-                                                <span className="text-xs text-zinc-400">
-                                                    Run
-                                                </span>
-                                            </div>
-                                            <p className="mt-1 text-xs text-zinc-400">
-                                                {command.description}
-                                            </p>
+                                            View Help
                                         </button>
-                                    ))}
+                                    </div>
+                                    
+                                    <div className="grid gap-2">
+                                        {availableCommands.map((command) => (
+                                            <button
+                                                key={command.name}
+                                                type="button"
+                                                onClick={() => executeCommand(command.name)}
+                                                className="w-full text-left group/item p-3 rounded-lg bg-zinc-800/30 border border-zinc-800 hover:border-amber-500/50 hover:bg-amber-500/5 transition-all duration-300"
+                                            >
+                                                <div className="flex items-center justify-between mb-1">
+                                                    <code className="text-amber-400 font-bold text-sm">
+                                                        {command.name}
+                                                    </code>
+                                                    <svg className="w-3 h-3 text-zinc-600 group-hover/item:text-amber-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                                    </svg>
+                                                </div>
+                                                <p className="text-[11px] text-zinc-500 line-clamp-1 group-hover/item:text-zinc-400 transition-colors">
+                                                    {command.description}
+                                                </p>
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                                
+                                {/* Book Footer */}
+                                <div className="p-4 bg-zinc-900 border-t border-zinc-800 text-center">
+                                    <div className="inline-block px-3 py-1 rounded bg-zinc-800 border border-zinc-700 text-[10px] text-zinc-500 font-mono">
+                                        PAGE: 01 / 01
+                                    </div>
                                 </div>
                             </div>
                         </div>
