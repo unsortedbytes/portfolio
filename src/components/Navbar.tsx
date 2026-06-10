@@ -68,14 +68,24 @@ const Navbar: React.FC = () => {
 
                     {/* Desktop */}
                     <div className="hidden md:flex items-center gap-7">
-                        {NAV_ITEMS.map((item) =>
-                            item.type === "route" ? (
+                        {NAV_ITEMS.map((item) => {
+                            if (item.name === "Live Projects") {
+                                return (
+                                    <Link
+                                        key={item.name}
+                                        to={item.href}
+                                        className={`live-nav-btn ${location.pathname === item.href ? "active-live" : ""}`}
+                                    >
+                                        <span className="live-dot" />
+                                        Live
+                                    </Link>
+                                );
+                            }
+                            return item.type === "route" ? (
                                 <Link
                                     key={item.name}
                                     to={item.href}
-                                    className={`${linkClass} ${
-                                        location.pathname === item.href ? "text-amber-400" : ""
-                                    }`}
+                                    className={`${linkClass} ${location.pathname === item.href ? "text-amber-400" : ""}`}
                                 >
                                     {item.name}
                                 </Link>
@@ -88,8 +98,8 @@ const Navbar: React.FC = () => {
                                 >
                                     {item.name}
                                 </a>
-                            )
-                        )}
+                            );
+                        })}
                     </div>
 
                     {/* Mobile toggle */}
@@ -111,8 +121,21 @@ const Navbar: React.FC = () => {
                 {/* Mobile menu */}
                 {isMobileMenuOpen && (
                     <div className="md:hidden mt-3 pb-3 border-t border-zinc-800 pt-3 flex flex-col gap-1">
-                        {NAV_ITEMS.map((item) =>
-                            item.type === "route" ? (
+                        {NAV_ITEMS.map((item) => {
+                            if (item.name === "Live Projects") {
+                                return (
+                                    <Link
+                                        key={item.name}
+                                        to={item.href}
+                                        className="live-nav-btn w-fit mt-1"
+                                        onClick={() => setIsMobileMenuOpen(false)}
+                                    >
+                                        <span className="live-dot" />
+                                        Live Projects
+                                    </Link>
+                                );
+                            }
+                            return item.type === "route" ? (
                                 <Link
                                     key={item.name}
                                     to={item.href}
@@ -130,8 +153,8 @@ const Navbar: React.FC = () => {
                                 >
                                     {item.name}
                                 </a>
-                            )
-                        )}
+                            );
+                        })}
                     </div>
                 )}
             </div>
