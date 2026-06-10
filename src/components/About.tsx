@@ -2,13 +2,14 @@ import React from "react";
 import GitHubActivity from "./GitHubActivity";
 import ScrollReveal from "./ScrollReveal";
 import CardNetwork from "./CardNetwork";
+import NebulaBg from "./NebulaBg";
 
 const About: React.FC = () => {
     return (
         <section id="about" className="py-24 bg-zinc-900 relative overflow-hidden">
             <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute inset-0 dot-grid opacity-20" />
-                <div className="float-d absolute -top-32 -left-32 w-[500px] h-[500px] bg-amber-500/4 rounded-full blur-3xl" />
+                <NebulaBg className="opacity-[0.55]" />
+                <div className="absolute inset-0 dot-grid opacity-10" />
             </div>
             <div className="container mx-auto px-6 relative z-10">
                 <ScrollReveal>
