@@ -1,21 +1,63 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useTypingEffect } from "../hooks/useTypingEffect";
 
-/* Fibonacci spiral particle positions — deterministic, no Math.random */
+/* ── Fibonacci spiral particles (deterministic) ── */
 const PHI = (1 + Math.sqrt(5)) / 2;
 const PARTICLES = Array.from({ length: 22 }, (_, i) => {
-  const theta = i * 2 * Math.PI * PHI;
-  const r = Math.sqrt((i + 0.5) / 22) * 44;
-  return {
-    id: i,
-    left: 50 + r * Math.cos(theta),
-    top: 50 + r * Math.sin(theta) * 0.55,
-    size: 1.5 + (i % 3) * 0.55,
-    dur: `${6 + (i % 5) * 1.6}s`,
-    delay: `${-(i * 0.35)}s`,
-    opacity: 0.25 + (i % 4) * 0.15,
-  };
+    const theta = i * 2 * Math.PI * PHI;
+    const r = Math.sqrt((i + 0.5) / 22) * 44;
+    return {
+        id: i,
+        left: 50 + r * Math.cos(theta),
+        top:  50 + r * Math.sin(theta) * 0.55,
+        size: 1.5 + (i % 3) * 0.55,
+        dur:  `${6 + (i % 5) * 1.6}s`,
+        delay:`${-(i * 0.35)}s`,
+        opacity: 0.25 + (i % 4) * 0.15,
+    };
 });
+
+/* ── Boot code lines ── */
+const BOOT_LINES = [
+    { text: "$ uvicorn app:app --host 0.0.0.0 --reload", color: "text-amber-400/50" },
+    { text: "INFO:  Starting server — Aditya Kumar v2.0",  color: "text-zinc-600" },
+    { text: "INFO:  Stack: Python · FastAPI · Rust · AWS",  color: "text-zinc-600" },
+    { text: "INFO:  Kubernetes nodes: healthy ✓",           color: "text-zinc-600" },
+    { text: "INFO:  Status: open to collaborate ✓",         color: "text-emerald-700" },
+];
+
+const FloatingCode: React.FC = () => {
+    const [visible, setVisible] = useState<number[]>([]);
+
+    useEffect(() => {
+        const timers = BOOT_LINES.map((_, i) =>
+            setTimeout(() => setVisible(prev => [...prev, i]), 900 + i * 550)
+        );
+        return () => timers.forEach(clearTimeout);
+    }, []);
+
+    return (
+        <div className="select-none pointer-events-none text-left" aria-hidden>
+            {BOOT_LINES.map((line, i) => (
+                visible.includes(i) ? (
+                    <div key={i} className={`code-line font-mono text-xs leading-6 ${line.color}`}>
+                        {line.text}
+                    </div>
+                ) : null
+            ))}
+            {visible.length < BOOT_LINES.length && (
+                <span className="blink text-amber-400/30 font-mono text-xs">█</span>
+            )}
+        </div>
+    );
+};
+
+/* ── Quick stats ── */
+const STATS = [
+    { n: "200+", label: "DSA solved" },
+    { n: "5+",   label: "live apps"  },
+    { n: "3",    label: "work roles" },
+];
 
 const Hero: React.FC = () => {
     const typingText = useTypingEffect(
@@ -30,30 +72,50 @@ const Hero: React.FC = () => {
         80, 40, 1500,
     );
 
+    /* Mouse-reactive grid */
+    const sectionRef = useRef<HTMLElement>(null);
+    const gridRef    = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const section = sectionRef.current;
+        const grid    = gridRef.current;
+        if (!section || !grid) return;
+        const onMove = (e: MouseEvent) => {
+            const r = section.getBoundingClientRect();
+            grid.style.setProperty("--gx", `${e.clientX - r.left}px`);
+            grid.style.setProperty("--gy", `${e.clientY - r.top}px`);
+        };
+        section.addEventListener("mousemove", onMove);
+        return () => section.removeEventListener("mousemove", onMove);
+    }, []);
+
     return (
         <section
+            ref={sectionRef}
             id="home"
             className="min-h-screen flex items-center justify-center bg-zinc-950 relative overflow-hidden"
         >
             {/* ── Background layers ── */}
             <div className="absolute inset-0 pointer-events-none">
-                {/* Dot grid */}
-                <div className="absolute inset-0 dot-grid opacity-50" />
+                {/* Mouse-reactive dot grid */}
+                <div ref={gridRef} className="absolute inset-0 grid-interactive opacity-60" />
 
                 {/* Grain */}
                 <div className="absolute inset-0 grain" />
 
-                {/* Aurora sweep — visible gradient band */}
-                <div className="aurora absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[340px]"
-                     style={{
-                       background: 'linear-gradient(135deg, rgba(255,94,26,0.18) 0%, rgba(255,140,90,0.12) 40%, rgba(255,94,26,0.06) 70%, transparent 100%)',
-                       filter: 'blur(48px)',
-                     }} />
+                {/* Aurora sweep */}
+                <div
+                    className="aurora absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[360px]"
+                    style={{
+                        background: "linear-gradient(135deg, rgba(255,94,26,0.16) 0%, rgba(255,140,90,0.10) 40%, rgba(255,94,26,0.05) 70%, transparent 100%)",
+                        filter: "blur(52px)",
+                    }}
+                />
 
-                {/* Deep glow orbs */}
-                <div className="float-a absolute -top-40 -left-40 w-[700px] h-[700px] bg-amber-500/7 rounded-full blur-3xl" />
+                {/* Deep orbs */}
+                <div className="float-a absolute -top-40 -left-40 w-[700px] h-[700px] bg-amber-500/6 rounded-full blur-3xl" />
                 <div className="float-b absolute -bottom-56 -right-40 w-[600px] h-[600px] bg-amber-400/5 rounded-full blur-3xl" />
-                <div className="float-c absolute top-1/3 right-1/5 w-[350px] h-[350px] bg-amber-600/5 rounded-full blur-3xl" />
+                <div className="float-c absolute top-1/3 right-1/5 w-[350px] h-[350px] bg-amber-600/4 rounded-full blur-3xl" />
 
                 {/* Horizontal accent lines */}
                 <div className="absolute top-[35%] left-0 right-0 h-px bg-gradient-to-r from-transparent via-amber-500/10 to-transparent" />
@@ -66,39 +128,87 @@ const Hero: React.FC = () => {
                         className="particle"
                         style={{
                             left: `${p.left}%`,
-                            top: `${p.top}%`,
-                            width: `${p.size}px`,
+                            top:  `${p.top}%`,
+                            width:  `${p.size}px`,
                             height: `${p.size}px`,
                             opacity: p.opacity,
-                            ['--dur' as string]: p.dur,
-                            ['--delay' as string]: p.delay,
+                            ["--dur" as string]:   p.dur,
+                            ["--delay" as string]: p.delay,
                         }}
                     />
                 ))}
+
+                {/* Floating boot code — upper right */}
+                <div className="absolute top-28 right-6 md:right-12 lg:right-24 hidden md:block">
+                    <FloatingCode />
+                </div>
+
+                {/* Corner bracket decorations */}
+                <div className="absolute top-24 left-8 text-amber-400/10 font-mono text-xs select-none hidden lg:block">
+                    {"{ backend: true,\n  systems: 'scaled',\n  status: 'online' }"}
+                </div>
             </div>
 
             {/* ── Content ── */}
             <div className="container mx-auto px-6 py-20 text-center relative z-10">
-                <div className="animate-fade-in max-w-3xl mx-auto">
-                    <p className="text-amber-400 font-mono text-sm tracking-widest uppercase mb-6 animate-slide-down">
-                        &gt; hello, world
-                    </p>
+                <div className="max-w-3xl mx-auto">
 
-                    <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 animate-slide-down leading-tight">
+                    {/* Eyebrow */}
+                    <div className="flex items-center justify-center gap-2 mb-6">
+                        <div className="progress-bar h-px w-8 bg-amber-400/60" />
+                        <p className="text-amber-400 font-mono text-xs tracking-widest uppercase">
+                            &gt; hello, world
+                        </p>
+                        <div className="progress-bar h-px w-8 bg-amber-400/60" style={{ animationDelay: "0.4s" }} />
+                    </div>
+
+                    {/* Name */}
+                    <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
                         <span className="text-amber-400 glitch">Aditya Kumar</span>
                     </h1>
 
                     {/* Typing effect */}
-                    <div className="h-8 flex items-center justify-center mb-8 animate-slide-up">
+                    <div className="h-8 flex items-center justify-center mb-6">
                         <span className="text-xl md:text-2xl text-zinc-300 font-mono">{typingText}</span>
-                        <span className="ml-1 text-amber-400 animate-pulse font-mono">|</span>
+                        <span className="ml-1 text-amber-400 blink font-mono">|</span>
                     </div>
 
-                    <p className="text-base md:text-lg text-zinc-400 max-w-xl mx-auto mb-10 leading-relaxed">
+                    {/* Quick stats */}
+                    <div className="flex justify-center gap-8 md:gap-12 mb-8">
+                        {STATS.map((s, i) => (
+                            <div
+                                key={s.label}
+                                className="stat-pop text-center group"
+                                style={{ animationDelay: `${0.6 + i * 0.15}s` }}
+                            >
+                                <p className="text-xl md:text-2xl font-bold font-mono text-white group-hover:text-amber-400 transition-colors duration-200">
+                                    {s.n}
+                                </p>
+                                <p className="text-[10px] text-zinc-600 font-mono uppercase tracking-widest mt-0.5">
+                                    {s.label}
+                                </p>
+                            </div>
+                        ))}
+                    </div>
+
+                    {/* Description */}
+                    <p className="text-sm md:text-base text-zinc-400 max-w-xl mx-auto mb-10 leading-relaxed">
                         Building scalable backend systems with Python, FastAPI, and cloud
                         infrastructure. Currently at{" "}
                         <span className="text-amber-400 font-medium">House of Amber</span>.
                     </p>
+
+                    {/* Tech stack badges */}
+                    <div className="flex flex-wrap justify-center gap-2 mb-10">
+                        {["Python", "FastAPI", "Rust", "Docker", "Kubernetes", "AWS"].map((tech) => (
+                            <span
+                                key={tech}
+                                className="shimmer-tag font-mono text-xs text-zinc-500 border border-zinc-800 hover:border-amber-400/40 hover:text-amber-400 px-2.5 py-1 rounded transition-colors duration-200"
+                            >
+                                {tech}
+                            </span>
+                        ))}
+                    </div>
 
                     {/* CTA buttons */}
                     <div className="flex flex-wrap justify-center gap-3 mb-12">

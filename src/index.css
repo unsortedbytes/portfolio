@@ -278,13 +278,49 @@
 .btn-shine:hover::after { animation: shine-sweep 0.55s ease forwards; }
 
 /* ── Card top accent draw ────────────────────────── */
-@keyframes bar-draw {
-  from { transform: scaleX(0); }
-  to   { transform: scaleX(1); }
-}
 .top-bar-draw {
   transform-origin: left;
   transform: scaleX(0);
   transition: transform 0.45s cubic-bezier(0.16,1,0.3,1);
 }
 .group:hover .top-bar-draw { transform: scaleX(1); }
+
+/* ── Interactive mouse-reactive dot grid ─────────── */
+.grid-interactive {
+  background-image:
+    radial-gradient(350px circle at var(--gx, -100vw) var(--gy, -100vh), rgba(255,94,26,0.22) 0%, transparent 65%),
+    radial-gradient(circle, rgba(255,94,26,0.12) 1px, transparent 1px);
+  background-size: 100% 100%, 28px 28px;
+}
+
+/* ── Floating terminal code fade-in ──────────────── */
+@keyframes code-line-in {
+  from { opacity: 0; transform: translateX(-8px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+.code-line { animation: code-line-in 0.35s ease both; }
+
+/* ── Stat number pop ─────────────────────────────── */
+@keyframes stat-pop {
+  0%   { transform: scale(0.8); opacity: 0; }
+  70%  { transform: scale(1.08); }
+  100% { transform: scale(1); opacity: 1; }
+}
+.stat-pop { animation: stat-pop 0.5s cubic-bezier(0.16,1,0.3,1) both; }
+
+/* ── Horizontal progress bar ─────────────────────── */
+@keyframes progress-fill {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+.progress-bar {
+  transform-origin: left;
+  animation: progress-fill 1.8s cubic-bezier(0.16,1,0.3,1) 0.2s both;
+}
+
+/* ── Blinking cursor ─────────────────────────────── */
+@keyframes blink-cursor {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+.blink { animation: blink-cursor 1s step-end infinite; }

@@ -47,7 +47,7 @@ const Experience: React.FC = () => {
 
     return (
         <section id="experience" className="py-24 bg-zinc-950 relative overflow-hidden">
-            {/* Background layers */}
+            {/* Background */}
             <div className="absolute inset-0 pointer-events-none">
                 <div className="absolute inset-0 dot-grid opacity-20" />
                 <div className="float-b absolute top-1/4 -right-40 w-[500px] h-[500px] bg-amber-500/4 rounded-full blur-3xl" />
@@ -61,52 +61,64 @@ const Experience: React.FC = () => {
                     </div>
                 </ScrollReveal>
 
-                <div className="max-w-3xl mx-auto space-y-4 relative">
-                    {/* Animated timeline line */}
-                    <div className="absolute left-0 top-0 bottom-0 w-px hidden sm:block overflow-hidden -translate-x-6">
-                        <div className="timeline-line h-full bg-gradient-to-b from-amber-400/60 via-amber-400/20 to-transparent" />
-                    </div>
-
+                <div className="max-w-3xl mx-auto">
                     {experiences.map((exp, index) => (
-                        <ScrollReveal key={index} delay={index * 120} direction={index % 2 === 0 ? 'left' : 'right'}>
-                            <div className="card-glow group bg-zinc-900 border border-zinc-800 rounded-xl p-6 hover:border-amber-400/30 transition-colors duration-300 relative">
-                                {/* Timeline dot */}
-                                <div className="absolute -left-9 top-7 w-2.5 h-2.5 rounded-full bg-amber-400/60 border border-amber-400/30 hidden sm:block" />
-                                {/* Top row */}
-                                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4">
-                                    <div>
-                                        <h3 className="text-lg font-bold text-white">{exp.title}</h3>
-                                        <p className="text-amber-400 font-medium text-sm">{exp.company}</p>
-                                        <p className="text-zinc-500 text-xs mt-0.5">{exp.location}</p>
-                                    </div>
-                                    <div className="flex sm:flex-col sm:items-end gap-2 shrink-0">
-                                        <span className="text-xs font-mono bg-amber-400/10 text-amber-400 border border-amber-400/20 px-2.5 py-1 rounded-md">
-                                            {exp.type}
-                                        </span>
-                                        <span className="text-zinc-400 text-xs font-mono">{exp.period}</span>
-                                    </div>
+                        <ScrollReveal key={index} delay={index * 130} direction="left">
+                            {/* Flex row: timeline track | card */}
+                            <div className="flex gap-5 sm:gap-7">
+
+                                {/* ── Timeline track (desktop) ── */}
+                                <div className="hidden sm:flex flex-col items-center w-5 shrink-0">
+                                    {/* Dot */}
+                                    <div className="mt-7 w-3 h-3 rounded-full bg-amber-400 ring-[3px] ring-zinc-950 border border-amber-400/30 shrink-0 z-10" />
+                                    {/* Connector line (all items) */}
+                                    <div className={`w-px flex-1 mt-1.5 ${
+                                        index < experiences.length - 1
+                                            ? 'bg-gradient-to-b from-amber-400/40 via-amber-400/15 to-transparent'
+                                            : 'bg-transparent'
+                                    }`} />
                                 </div>
 
-                                {/* Bullets */}
-                                <ul className="space-y-1.5 mb-4">
-                                    {exp.description.map((item, i) => (
-                                        <li key={i} className="flex items-start gap-2 text-sm text-zinc-300">
-                                            <span className="text-amber-400 mt-1 shrink-0 text-xs">▸</span>
-                                            {item}
-                                        </li>
-                                    ))}
-                                </ul>
+                                {/* ── Card ── */}
+                                <div className="flex-1 pb-5">
+                                    <div className="card-glow group bg-zinc-900 border border-zinc-800 rounded-xl p-6 hover:border-amber-400/30 transition-colors duration-300">
+                                        {/* Top row */}
+                                        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4">
+                                            <div>
+                                                <h3 className="text-lg font-bold text-white">{exp.title}</h3>
+                                                <p className="text-amber-400 font-medium text-sm">{exp.company}</p>
+                                                <p className="text-zinc-500 text-xs mt-0.5">{exp.location}</p>
+                                            </div>
+                                            <div className="flex sm:flex-col sm:items-end gap-2 shrink-0">
+                                                <span className="text-xs font-mono bg-amber-400/10 text-amber-400 border border-amber-400/20 px-2.5 py-1 rounded-md">
+                                                    {exp.type}
+                                                </span>
+                                                <span className="text-zinc-500 text-xs font-mono">{exp.period}</span>
+                                            </div>
+                                        </div>
 
-                                {/* Tags */}
-                                <div className="flex flex-wrap gap-1.5">
-                                    {exp.tags.map((tag, i) => (
-                                        <span
-                                            key={i}
-                                            className="shimmer-tag bg-zinc-800 text-zinc-300 border border-zinc-700 px-2.5 py-0.5 rounded text-xs font-mono"
-                                        >
-                                            {tag}
-                                        </span>
-                                    ))}
+                                        {/* Bullets */}
+                                        <ul className="space-y-1.5 mb-4">
+                                            {exp.description.map((item, i) => (
+                                                <li key={i} className="flex items-start gap-2 text-sm text-zinc-300">
+                                                    <span className="text-amber-400 mt-1 shrink-0 text-xs">▸</span>
+                                                    {item}
+                                                </li>
+                                            ))}
+                                        </ul>
+
+                                        {/* Tags */}
+                                        <div className="flex flex-wrap gap-1.5">
+                                            {exp.tags.map((tag, i) => (
+                                                <span
+                                                    key={i}
+                                                    className="shimmer-tag bg-zinc-800 text-zinc-300 border border-zinc-700 px-2.5 py-0.5 rounded text-xs font-mono"
+                                                >
+                                                    {tag}
+                                                </span>
+                                            ))}
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </ScrollReveal>
