@@ -21,7 +21,7 @@ const PARTICLES = Array.from({ length: 22 }, (_, i) => {
 /* ── Boot code lines ── */
 const BOOT_LINES = [
     { text: "$ uvicorn app:app --host 0.0.0.0 --reload", color: "text-amber-400/50" },
-    { text: "INFO:  Starting server — Aditya Kumar v2.0",  color: "text-zinc-600" },
+    { text: "INFO:  Starting server — unsortedbytes v2.0",  color: "text-zinc-600" },
     { text: "INFO:  Stack: Python · FastAPI · Rust · AWS",  color: "text-zinc-600" },
     { text: "INFO:  Kubernetes nodes: healthy ✓",           color: "text-zinc-600" },
     { text: "INFO:  Status: open to collaborate ✓",         color: "text-emerald-700" },

@@ -49,7 +49,7 @@ const Footer: React.FC = () => {
 
                 <div className="mt-6 pt-6 border-t border-zinc-800/50 text-center">
                     <p className="text-zinc-600 text-xs font-mono">
-                        &copy; 2026 UNSORTEDBYTES · Built with React & Tailwind CSS
+                        &copy; 2026 UNSORTEDBYTES · Vibe coded with Claude · React · Tailwind CSS
                     </p>
                 </div>
             </div>

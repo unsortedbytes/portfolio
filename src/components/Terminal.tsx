@@ -10,7 +10,7 @@ const Terminal: React.FC = () => {
     const [history, setHistory] = useState<TerminalLine[]>([
         {
             type: "output",
-            content: "Welcome to Aditya's Interactive Terminal!",
+            content: "Welcome to unsortedbytes terminal ~",
         },
         { type: "output", content: 'Type "help" to see available commands.' },
         { type: "output", content: "" },
@@ -50,7 +50,7 @@ const Terminal: React.FC = () => {
                 "",
             ]);
             addOutput([
-                "Aditya Kumar",
+                "unsortedbytes",
                 "Software Developer | Backend Specialist",
                 "IIT Kharagpur",
                 "",
@@ -62,7 +62,7 @@ const Terminal: React.FC = () => {
         },
         about: () => {
             addOutput([
-                "About Aditya Kumar:",
+                "About unsortedbytes:",
                 "A backend-focused software developer with experience in Python, FastAPI, Rust, and cloud infrastructure.",
                 "Currently working at House of Amber, building scalable enterprise applications.",
                 "",
@@ -232,7 +232,7 @@ const Terminal: React.FC = () => {
         },
         whoami: () => {
             addOutput([
-                "Aditya Kumar",
+                "unsortedbytes",
                 "Software Developer @ House of Amber",
                 "B.Tech, Mechanical Engineering | IIT Kharagpur",
                 "Software Developer | Backend Specialist",
@@ -546,7 +546,7 @@ const Terminal: React.FC = () => {
 
                             {/* Footer */}
                             <div className="shrink-0 px-5 py-3 border-t border-zinc-800">
-                                <span className="text-[10px] font-mono text-zinc-600">Authored by Aditya Kumar</span>
+                                <span className="text-[10px] font-mono text-zinc-600">by unsortedbytes</span>
                             </div>
                         </div>
                     </div>
