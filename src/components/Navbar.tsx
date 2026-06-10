@@ -26,11 +26,10 @@ const Navbar: React.FC = () => {
 
     const handleNavClick = (href: string) => {
         if (href.startsWith("/#")) {
-            // Hash links on home page
             if (location.pathname !== "/") {
-                window.location.href = href;
+                window.location.assign(href);
             } else {
-                const element = document.querySelector(href);
+                const element = document.querySelector(href.substring(1));
                 element?.scrollIntoView({ behavior: "smooth" });
             }
         }

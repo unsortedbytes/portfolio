@@ -19,13 +19,13 @@ const Hero: React.FC = () => {
     return (
         <section
             id="home"
-            className="min-h-screen flex items-center justify-center bg-gradient-to-br from-dark-bg via-zinc-900 to-dark-bg relative overflow-hidden"
+            className="min-h-screen flex items-center justify-center bg-gradient-to-br from-zinc-950 via-zinc-900 to-zinc-950 relative overflow-hidden"
         >
             {/* Animated background elements */}
             <div className="absolute inset-0 overflow-hidden">
                 <div className="absolute -top-1/2 -left-1/2 w-96 h-96 bg-amber-500 opacity-10 rounded-full blur-3xl animate-pulse"></div>
                 <div
-                    className="absolute -bottom-1/2 -right-1/2 w-96 h-96 bg-secondary opacity-10 rounded-full blur-3xl animate-pulse"
+                    className="absolute -bottom-1/2 -right-1/2 w-96 h-96 bg-orange-500 opacity-10 rounded-full blur-3xl animate-pulse"
                     style={{ animationDelay: "1s" }}
                 ></div>
             </div>

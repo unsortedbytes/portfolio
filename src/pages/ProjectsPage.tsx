@@ -170,25 +170,6 @@ const ProjectsPage: React.FC = () => {
                     ))}
                 </div>
 
-                {/* Info Section */}
-                <div className="max-w-4xl mx-auto bg-zinc-800/30 border border-zinc-700 rounded-lg p-8 text-center mb-16">
-                    <h2 className="text-2xl font-bold text-white mb-4">
-                        How to customize this page?
-                    </h2>
-                    <p className="text-zinc-400 mb-4">
-                        Edit the{" "}
-                        <code className="bg-zinc-900 px-2 py-1 rounded text-amber-400">
-                            liveProjects
-                        </code>{" "}
-                        array in the ProjectsPage component to add your own live
-                        projects. Update the URLs, titles, descriptions, and
-                        tags to match your actual projects.
-                    </p>
-                    <p className="text-zinc-500 text-sm">
-                        Each project card is clickable and will open your live
-                        project in a new tab.
-                    </p>
-                </div>
             </div>
 
             <Footer />

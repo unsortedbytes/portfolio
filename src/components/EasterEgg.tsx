@@ -1,20 +1,19 @@
 import React, { useEffect, useState } from 'react';
 
+const KONAMI_CODE = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+
 const EasterEgg: React.FC = () => {
   const [showSecret, setShowSecret] = useState(false);
   const [konamiIndex, setKonamiIndex] = useState(0);
-  
-  // Konami Code: Up, Up, Down, Down, Left, Right, Left, Right, B, A
-  const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
 
   useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent) => {
       const key = e.key;
       
-      if (key.toLowerCase() === konamiCode[konamiIndex].toLowerCase()) {
+      if (key.toLowerCase() === KONAMI_CODE[konamiIndex].toLowerCase()) {
         setKonamiIndex((prev) => prev + 1);
-        
-        if (konamiIndex + 1 === konamiCode.length) {
+
+        if (konamiIndex + 1 === KONAMI_CODE.length) {
           setShowSecret(true);
           setKonamiIndex(0);
           

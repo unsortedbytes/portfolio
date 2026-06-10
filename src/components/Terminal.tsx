@@ -114,11 +114,11 @@ const Terminal: React.FC = () => {
                 "  • Tech: Python, FastAPI, Docker, AWS, Kubernetes",
                 "",
                 "Software Development Intern",
-                "Mahi Mahi Marketing Solution | Mar 2025 - Present",
-                "  • Developing Maven AI platform",
+                "Mahi Mahi Marketing Solution | Mar 2025 - Jun 2025",
+                "  • Developed Maven AI platform",
                 "",
                 "Software Developer Intern",
-                "Dhruva Capital | Feb 2025 - Present",
+                "Dhruva Capital | Feb 2025 - Apr 2025",
                 "  • Built DhruvaCapital.com and SwanSathi.com",
                 "",
             ]);
@@ -256,7 +256,7 @@ const Terminal: React.FC = () => {
         },
         email: () => {
             addOutput(["Opening email client...", ""]);
-            window.location.href = "mailto:adi.bytes@gmail.com";
+            window.open("mailto:adi.bytes@gmail.com");
         },
         neofetch: () => {
             addOutput([
@@ -605,7 +605,7 @@ const SnakeGame: React.FC<{ onExit: () => void }> = ({ onExit }) => {
         const gridSize = 20;
         const tileCount = canvas.width / gridSize;
 
-        let snake = [{ x: 10, y: 10 }];
+        const snake = [{ x: 10, y: 10 }];
         let food = { x: 15, y: 15 };
         let dx = 0;
         let dy = 0;
@@ -739,7 +739,7 @@ const SnakeGame: React.FC<{ onExit: () => void }> = ({ onExit }) => {
                     ref={canvasRef}
                     width={400}
                     height={400}
-                    className="border-2 border-primary rounded-lg mx-auto shadow-2xl"
+                    className="border-2 border-amber-500 rounded-lg mx-auto shadow-2xl"
                 />
                 <div className="mt-6 text-zinc-400">
                     {gameOver ? (
@@ -754,7 +754,7 @@ const SnakeGame: React.FC<{ onExit: () => void }> = ({ onExit }) => {
                     )}
                     <button
                         onClick={onExit}
-                        className="mt-4 px-6 py-2 bg-amber-500 text-dark-bg rounded-lg font-semibold hover:bg-amber-600 transition duration-300"
+                        className="mt-4 px-6 py-2 bg-amber-500 text-zinc-950 rounded-lg font-semibold hover:bg-amber-600 transition duration-300"
                     >
                         Back to Terminal
                     </button>
@@ -764,29 +764,25 @@ const SnakeGame: React.FC<{ onExit: () => void }> = ({ onExit }) => {
     );
 };
 
+const SAMPLE_TEXTS = [
+    "The quick brown fox jumps over the lazy dog while coding in JavaScript and debugging TypeScript errors.",
+    "React hooks make functional components powerful. useState and useEffect are essential for modern development.",
+    "Docker containers provide consistent environments across development and production deployments using Kubernetes.",
+    "FastAPI delivers high-performance Python APIs with automatic documentation and type validation built-in.",
+];
+
 // Typing Test Component
 const TypingTest: React.FC<{ onExit: () => void }> = ({ onExit }) => {
     const [started, setStarted] = useState(false);
     const [finished, setFinished] = useState(false);
-    const [currentText, setCurrentText] = useState("");
+    const [currentText, setCurrentText] = useState(
+        () => SAMPLE_TEXTS[Math.floor(Math.random() * SAMPLE_TEXTS.length)],
+    );
     const [userInput, setUserInput] = useState("");
     const [startTime, setStartTime] = useState<number>(0);
     const [wpm, setWpm] = useState(0);
     const [accuracy, setAccuracy] = useState(100);
     const inputRef = useRef<HTMLInputElement>(null);
-
-    const sampleTexts = [
-        "The quick brown fox jumps over the lazy dog while coding in JavaScript and debugging TypeScript errors.",
-        "React hooks make functional components powerful. useState and useEffect are essential for modern development.",
-        "Docker containers provide consistent environments across development and production deployments using Kubernetes.",
-        "FastAPI delivers high-performance Python APIs with automatic documentation and type validation built-in.",
-    ];
-
-    useEffect(() => {
-        setCurrentText(
-            sampleTexts[Math.floor(Math.random() * sampleTexts.length)],
-        );
-    }, []);
 
     const startTest = () => {
         setStarted(true);
@@ -823,7 +819,7 @@ const TypingTest: React.FC<{ onExit: () => void }> = ({ onExit }) => {
         setFinished(false);
         setUserInput("");
         setCurrentText(
-            sampleTexts[Math.floor(Math.random() * sampleTexts.length)],
+            SAMPLE_TEXTS[Math.floor(Math.random() * SAMPLE_TEXTS.length)],
         );
         setWpm(0);
         setAccuracy(100);

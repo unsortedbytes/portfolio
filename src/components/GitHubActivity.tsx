@@ -1,22 +1,16 @@
 import React from 'react';
 
-const GitHubActivity: React.FC = () => {
-  // Generate mock contribution data (in real app, fetch from GitHub API)
-  const generateContributions = () => {
-    const contributions = [];
-    const weeks = 52;
-    const daysPerWeek = 7;
-    
-    for (let week = 0; week < weeks; week++) {
-      for (let day = 0; day < daysPerWeek; day++) {
-        const level = Math.floor(Math.random() * 5); // 0-4 contribution levels
-        contributions.push({ week, day, level });
-      }
+const contributions = (() => {
+  const result = [];
+  for (let week = 0; week < 52; week++) {
+    for (let day = 0; day < 7; day++) {
+      result.push({ week, day, level: Math.floor(Math.random() * 5) });
     }
-    return contributions;
-  };
+  }
+  return result;
+})();
 
-  const contributions = generateContributions();
+const GitHubActivity: React.FC = () => {
 
   const getColor = (level: number) => {
     const colors = [
