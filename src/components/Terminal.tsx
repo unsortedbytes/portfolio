@@ -461,7 +461,7 @@ const Terminal: React.FC = () => {
                                 {/* Terminal Content */}
                                 <div
                                     ref={terminalRef}
-                                    className="p-8 h-[550px] overflow-y-auto font-mono text-sm sm:text-base leading-relaxed scrollbar-thin scrollbar-thumb-amber-500/10 scrollbar-track-transparent"
+                                    className="p-8 h-[380px] overflow-y-auto font-mono text-sm sm:text-base leading-relaxed scrollbar-thin scrollbar-thumb-amber-500/10 scrollbar-track-transparent"
                                     onClick={() => inputRef.current?.focus()}
                                 >
                                     {history.map((line, index) => (
