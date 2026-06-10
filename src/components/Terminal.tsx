@@ -664,7 +664,7 @@ const SnakeGame: React.FC<{ onExit: () => void }> = ({ onExit }) => {
 
             // Draw snake
             snake.forEach((segment, index) => {
-                ctx.fillStyle = index === 0 ? "#fbbf24" : "#f59e0b";
+                ctx.fillStyle = index === 0 ? "#FF5E1A" : "#FF8C5A";
                 ctx.fillRect(
                     segment.x * gridSize + 1,
                     segment.y * gridSize + 1,
@@ -674,7 +674,7 @@ const SnakeGame: React.FC<{ onExit: () => void }> = ({ onExit }) => {
             });
 
             // Draw food
-            ctx.fillStyle = "#f97316";
+            ctx.fillStyle = "#FF5E1A";
             ctx.fillRect(
                 food.x * gridSize + 1,
                 food.y * gridSize + 1,
