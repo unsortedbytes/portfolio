@@ -56,6 +56,11 @@ const Hero: React.FC = () => {
                     <div className="flex flex-wrap justify-center gap-3 mb-12">
                         <a
                             href="#projects"
+                            onClick={(e) => {
+                                e.preventDefault();
+                                const el = document.getElementById("projects");
+                                if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: "smooth" });
+                            }}
                             className="bg-amber-400 text-zinc-950 px-7 py-2.5 rounded-lg font-semibold hover:bg-amber-300 transition-colors duration-200 text-sm"
                         >
                             View My Work
@@ -72,6 +77,11 @@ const Hero: React.FC = () => {
                         </a>
                         <a
                             href="#terminal"
+                            onClick={(e) => {
+                                e.preventDefault();
+                                const el = document.getElementById("terminal");
+                                if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: "smooth" });
+                            }}
                             className="text-zinc-400 hover:text-amber-400 px-7 py-2.5 rounded-lg font-semibold transition-colors duration-200 text-sm border border-zinc-700 hover:border-zinc-600"
                         >
                             Try Terminal
