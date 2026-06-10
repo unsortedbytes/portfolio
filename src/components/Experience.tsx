@@ -1,5 +1,6 @@
 import React from "react";
 import ScrollReveal from "./ScrollReveal";
+import CardNetwork from "./CardNetwork";
 
 const Experience: React.FC = () => {
     const experiences = [
@@ -81,7 +82,8 @@ const Experience: React.FC = () => {
 
                                 {/* ── Card ── */}
                                 <div className="flex-1 pb-5">
-                                    <div className="card-glow group bg-zinc-900 border border-zinc-800 rounded-xl p-6 hover:border-amber-400/30 transition-colors duration-300">
+                                    <div className="card-glow group relative overflow-hidden bg-zinc-900 border border-zinc-800 rounded-xl p-6 hover:border-amber-400/30 transition-colors duration-300">
+                                        <CardNetwork className="opacity-[0.22]" />
                                         {/* Top row */}
                                         <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4">
                                             <div>

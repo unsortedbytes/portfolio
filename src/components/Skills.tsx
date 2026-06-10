@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import ScrollReveal from './ScrollReveal';
+import CardNetwork from './CardNetwork';
 
 const CountUp: React.FC<{ to: number; suffix?: string; duration?: number }> = ({
   to, suffix = '', duration = 1400,
@@ -94,7 +95,8 @@ const Skills: React.FC = () => {
         <div className="max-w-4xl mx-auto space-y-4">
           {categories.map((cat, index) => (
             <ScrollReveal key={cat.label} delay={index * 80} direction="scale">
-              <div className="card-glow bg-zinc-900 border border-zinc-800 rounded-xl p-6 hover:border-amber-400/20 transition-colors duration-300">
+              <div className="card-glow relative overflow-hidden bg-zinc-900 border border-zinc-800 rounded-xl p-6 hover:border-amber-400/20 transition-colors duration-300">
+                <CardNetwork className="opacity-[0.22]" />
                 <p className="text-xs font-mono text-amber-400 uppercase tracking-widest mb-3">
                   {cat.label}
                 </p>
@@ -123,7 +125,8 @@ const Skills: React.FC = () => {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {achievements.map((a, i) => (
               <ScrollReveal key={a.label} delay={120 + i * 80} direction="scale">
-                <div className="card-glow bg-zinc-900 border border-zinc-800 rounded-xl p-6 hover:border-amber-400/20 transition-colors duration-300 text-center">
+                <div className="card-glow relative overflow-hidden bg-zinc-900 border border-zinc-800 rounded-xl p-6 hover:border-amber-400/20 transition-colors duration-300 text-center">
+                  <CardNetwork className="opacity-[0.3]" />
                   <p className="text-4xl font-bold gradient-text mb-1 font-mono">
                     <CountUp to={a.stat} suffix={a.suffix} />
                   </p>

@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import ScrollReveal from './ScrollReveal';
+import CardNetwork from './CardNetwork';
 
 const projects = [
   {
@@ -88,10 +89,11 @@ const TiltCard: React.FC<TiltCardProps> = ({ children, className = '' }) => {
   return (
     <div
       ref={ref}
-      className={`tilt-card ${className}`}
+      className={`tilt-card relative overflow-hidden ${className}`}
       onMouseMove={onMove}
       onMouseLeave={onLeave}
     >
+      <CardNetwork className="opacity-[0.28]" />
       {children}
     </div>
   );

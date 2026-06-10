@@ -1,6 +1,7 @@
 import React from "react";
 import GitHubActivity from "./GitHubActivity";
 import ScrollReveal from "./ScrollReveal";
+import CardNetwork from "./CardNetwork";
 
 const About: React.FC = () => {
     return (
@@ -19,7 +20,8 @@ const About: React.FC = () => {
 
                 <div className="max-w-4xl mx-auto space-y-8">
                     <ScrollReveal delay={100}>
-                        <div className="card-glow bg-zinc-800/40 border border-zinc-700/50 rounded-xl p-8">
+                        <div className="card-glow relative overflow-hidden bg-zinc-800/40 border border-zinc-700/50 rounded-xl p-8">
+                        <CardNetwork className="opacity-[0.2]" />
                             <p className="text-zinc-300 leading-relaxed mb-4">
                                 I'm a software developer focused on backend engineering and
                                 systems programming, currently completing my B.Tech in Mechanical
@@ -63,7 +65,8 @@ const About: React.FC = () => {
                             },
                         ].map((item, i) => (
                             <ScrollReveal key={item.label} delay={150 + i * 80}>
-                                <div className="card-glow bg-zinc-800/40 border border-zinc-700/50 rounded-xl p-5 hover:border-amber-400/30 transition-colors duration-300">
+                                <div className="card-glow relative overflow-hidden bg-zinc-800/40 border border-zinc-700/50 rounded-xl p-5 hover:border-amber-400/30 transition-colors duration-300">
+                                <CardNetwork className="opacity-[0.2]" />
                                     <p className="text-xs font-mono text-amber-400 uppercase tracking-widest mb-2">
                                         {item.label}
                                     </p>

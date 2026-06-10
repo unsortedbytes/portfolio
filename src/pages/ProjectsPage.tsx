@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import Footer from "../components/Footer";
 import ScrollReveal from "../components/ScrollReveal";
+import CardNetwork from "../components/CardNetwork";
 
 interface LiveProject {
     id: string;
@@ -161,6 +162,9 @@ const ProjectsPage: React.FC = () => {
                                 href={project.liveUrl}
                                 className="hover-lift relative flex flex-col bg-zinc-900 border border-zinc-800 hover:border-zinc-700 rounded-2xl overflow-hidden group transition-colors duration-300 h-full"
                             >
+                                {/* Particle network background */}
+                                <CardNetwork className="opacity-[0.28]" />
+
                                 {/* Accent bar — draws left→right on hover */}
                                 <div className={`top-bar-draw absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r ${project.accent}`} />
 
