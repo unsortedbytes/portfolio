@@ -1,62 +1,99 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import ScrollReveal from './ScrollReveal';
 
-const Projects: React.FC = () => {
-  const projects = [
-    {
-      title: 'Portmon',
-      year: '2025',
-      description: 'High-performance Rust CLI tool to inspect active TCP/UDP ports and map them to Linux processes',
-      features: [
-        'Functionality comparable to sudo ss -tulpn',
-        'Parses system socket and process metadata',
-        'Secure, privilege-aware execution',
-        'Exposes detailed port, PID, protocol, and listening state',
-      ],
-      tags: ['Rust', 'Linux', 'Networking', 'CLI'],
-      github: 'https://github.com/unsortedbytes/portmon',
-    },
-    {
-      title: 'University Library Management',
-      year: '2024',
-      description: 'Production-grade library management system with secure APIs and role-based access control',
-      features: [
-        'Rate limiting, DDoS protection, and advanced error handling',
-        'Redis caching for improved query performance',
-        'Efficient PostgreSQL queries to reduce latency',
-        'Automated workflows and role-based access control',
-      ],
-      tags: ['Next.js', 'Node.js', 'PostgreSQL', 'Redis'],
-      github: 'https://github.com/unsortedkgpian/University-Library-Management-System',
-    },
-    {
-      title: 'Mystery Messaging',
-      year: '2024',
-      description: 'Full-stack anonymous messaging platform with secure feedback sharing',
-      features: [
-        'Email verification and NextAuth authentication',
-        'Secure session management and data protection',
-        'AI-powered message suggestions',
-        'Anonymous send and receive messaging',
-      ],
-      tags: ['Next.js', 'TypeScript', 'MongoDB', 'AI'],
-      github: 'https://github.com/unsortedkgpian/Mystery-message-',
-    },
-    {
-      title: 'Snake Game',
-      year: '2023',
-      description: 'Classic Snake game in C++ with real-time mechanics and grid-based state management',
-      features: [
-        'Real-time movement and collision detection',
-        'Score tracking system',
-        'Grid-based state management for smooth gameplay',
-        'Efficient game-loop logic',
-      ],
-      tags: ['C++', 'Game Logic', 'Algorithms'],
-      github: 'https://github.com/unsortedbytes/snake-game',
-    },
-  ];
+const projects = [
+  {
+    title: 'Portmon',
+    year: '2025',
+    description: 'High-performance Rust CLI tool to inspect active TCP/UDP ports and map them to Linux processes',
+    features: [
+      'Functionality comparable to sudo ss -tulpn',
+      'Parses system socket and process metadata',
+      'Secure, privilege-aware execution',
+      'Exposes detailed port, PID, protocol, and listening state',
+    ],
+    tags: ['Rust', 'Linux', 'Networking', 'CLI'],
+    github: 'https://github.com/unsortedbytes/portmon',
+  },
+  {
+    title: 'University Library Management',
+    year: '2024',
+    description: 'Production-grade library management system with secure APIs and role-based access control',
+    features: [
+      'Rate limiting, DDoS protection, and advanced error handling',
+      'Redis caching for improved query performance',
+      'Efficient PostgreSQL queries to reduce latency',
+      'Role-based access control and automated workflows',
+    ],
+    tags: ['Next.js', 'Node.js', 'PostgreSQL', 'Redis'],
+    github: 'https://github.com/unsortedkgpian/University-Library-Management-System',
+  },
+  {
+    title: 'Mystery Messaging',
+    year: '2024',
+    description: 'Full-stack anonymous messaging platform with secure feedback sharing',
+    features: [
+      'Email verification and NextAuth authentication',
+      'Secure session management and data protection',
+      'AI-powered message suggestions',
+      'Anonymous send and receive messaging',
+    ],
+    tags: ['Next.js', 'TypeScript', 'MongoDB', 'AI'],
+    github: 'https://github.com/unsortedkgpian/Mystery-message-',
+  },
+  {
+    title: 'Snake Game',
+    year: '2023',
+    description: 'Classic Snake game in C++ with real-time mechanics and grid-based state management',
+    features: [
+      'Real-time movement and collision detection',
+      'Score tracking system',
+      'Grid-based state management for smooth gameplay',
+      'Efficient game-loop logic',
+    ],
+    tags: ['C++', 'Game Logic', 'Algorithms'],
+    github: 'https://github.com/unsortedbytes/snake-game',
+  },
+];
 
+interface TiltCardProps {
+  children: React.ReactNode;
+  className?: string;
+}
+
+const TiltCard: React.FC<TiltCardProps> = ({ children, className = '' }) => {
+  const ref = useRef<HTMLDivElement>(null);
+
+  const onMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const el = ref.current;
+    if (!el) return;
+    const r = el.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width - 0.5;
+    const y = (e.clientY - r.top) / r.height - 0.5;
+    el.style.transform = `perspective(700px) rotateY(${x * 12}deg) rotateX(${-y * 12}deg) translateZ(6px)`;
+    el.style.boxShadow = `${-x * 12}px ${-y * 12}px 32px rgba(255,94,26,0.08)`;
+  };
+
+  const onLeave = () => {
+    const el = ref.current;
+    if (!el) return;
+    el.style.transform = 'perspective(700px) rotateY(0deg) rotateX(0deg) translateZ(0)';
+    el.style.boxShadow = 'none';
+  };
+
+  return (
+    <div
+      ref={ref}
+      className={`tilt-card ${className}`}
+      onMouseMove={onMove}
+      onMouseLeave={onLeave}
+    >
+      {children}
+    </div>
+  );
+};
+
+const Projects: React.FC = () => {
   return (
     <section id="projects" className="py-24 bg-zinc-900">
       <div className="container mx-auto px-6">
@@ -69,15 +106,16 @@ const Projects: React.FC = () => {
 
         <div className="grid md:grid-cols-2 gap-5 max-w-5xl mx-auto">
           {projects.map((project, index) => (
-            <ScrollReveal key={index} delay={index * 100}>
-              <div className="group bg-zinc-800/40 border border-zinc-700/50 rounded-xl p-6 hover:border-amber-400/30 transition-colors duration-300 flex flex-col h-full">
-                {/* Header */}
+            <ScrollReveal
+              key={index}
+              delay={index * 100}
+              direction={index % 2 === 0 ? 'left' : 'right'}
+            >
+              <TiltCard className="bg-zinc-800/40 border border-zinc-700/50 rounded-xl p-6 hover:border-amber-400/30 h-full flex flex-col">
                 <div className="flex items-start justify-between mb-3">
-                  <div>
-                    <h3 className="text-lg font-bold text-white group-hover:text-amber-400 transition-colors duration-200">
-                      {project.title}
-                    </h3>
-                  </div>
+                  <h3 className="text-lg font-bold text-white group-hover:text-amber-400 transition-colors duration-200">
+                    {project.title}
+                  </h3>
                   <span className="text-xs font-mono text-zinc-500 bg-zinc-800 border border-zinc-700 px-2 py-0.5 rounded shrink-0 ml-3">
                     {project.year}
                   </span>
@@ -94,7 +132,6 @@ const Projects: React.FC = () => {
                   ))}
                 </ul>
 
-                {/* Tags */}
                 <div className="flex flex-wrap gap-1.5 mb-4">
                   {project.tags.map((tag, i) => (
                     <span
@@ -106,7 +143,6 @@ const Projects: React.FC = () => {
                   ))}
                 </div>
 
-                {/* Links */}
                 <div className="mt-auto pt-2 border-t border-zinc-700/50">
                   <a
                     href={project.github}
@@ -120,7 +156,7 @@ const Projects: React.FC = () => {
                     View Source
                   </a>
                 </div>
-              </div>
+              </TiltCard>
             </ScrollReveal>
           ))}
         </div>

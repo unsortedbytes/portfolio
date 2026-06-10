@@ -35,7 +35,7 @@ const Hero: React.FC = () => {
                     </p>
 
                     <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 animate-slide-down leading-tight">
-                        Aditya Kumar
+                        <span className="text-amber-400 glitch">Aditya Kumar</span>
                     </h1>
 
                     {/* Typing effect */}
@@ -125,8 +125,9 @@ const Hero: React.FC = () => {
                 </div>
 
                 {/* Scroll indicator */}
-                <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
-                    <div className="w-px h-8 bg-gradient-to-b from-transparent to-amber-400/50" />
+                <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1">
+                    <span className="text-[10px] font-mono text-zinc-600 tracking-widest uppercase">scroll</span>
+                    <div className="w-px h-10 bg-gradient-to-b from-transparent via-amber-400/40 to-transparent scroll-pulse" />
                 </div>
             </div>
         </section>
