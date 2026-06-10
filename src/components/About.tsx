@@ -4,8 +4,12 @@ import ScrollReveal from "./ScrollReveal";
 
 const About: React.FC = () => {
     return (
-        <section id="about" className="py-24 bg-zinc-900">
-            <div className="container mx-auto px-6">
+        <section id="about" className="py-24 bg-zinc-900 relative overflow-hidden">
+            <div className="absolute inset-0 pointer-events-none">
+                <div className="absolute inset-0 dot-grid opacity-20" />
+                <div className="float-d absolute -top-32 -left-32 w-[500px] h-[500px] bg-amber-500/4 rounded-full blur-3xl" />
+            </div>
+            <div className="container mx-auto px-6 relative z-10">
                 <ScrollReveal>
                     <div className="text-center mb-12">
                         <h2 className="text-4xl font-bold text-white mb-3">About Me</h2>
@@ -15,7 +19,7 @@ const About: React.FC = () => {
 
                 <div className="max-w-4xl mx-auto space-y-8">
                     <ScrollReveal delay={100}>
-                        <div className="bg-zinc-800/40 border border-zinc-700/50 rounded-xl p-8">
+                        <div className="card-glow bg-zinc-800/40 border border-zinc-700/50 rounded-xl p-8">
                             <p className="text-zinc-300 leading-relaxed mb-4">
                                 I'm a software developer focused on backend engineering and
                                 systems programming, currently completing my B.Tech in Mechanical
@@ -59,7 +63,7 @@ const About: React.FC = () => {
                             },
                         ].map((item, i) => (
                             <ScrollReveal key={item.label} delay={150 + i * 80}>
-                                <div className="bg-zinc-800/40 border border-zinc-700/50 rounded-xl p-5 hover:border-amber-400/30 transition-colors duration-300">
+                                <div className="card-glow bg-zinc-800/40 border border-zinc-700/50 rounded-xl p-5 hover:border-amber-400/30 transition-colors duration-300">
                                     <p className="text-xs font-mono text-amber-400 uppercase tracking-widest mb-2">
                                         {item.label}
                                     </p>

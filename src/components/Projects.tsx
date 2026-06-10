@@ -95,7 +95,13 @@ const TiltCard: React.FC<TiltCardProps> = ({ children, className = '' }) => {
 
 const Projects: React.FC = () => {
   return (
-    <section id="projects" className="py-24 bg-zinc-900">
+    <section id="projects" className="py-24 bg-zinc-900 relative overflow-hidden">
+      {/* Background layers */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 dot-grid opacity-20" />
+        <div className="float-b absolute -top-32 -right-32 w-[500px] h-[500px] bg-amber-500/4 rounded-full blur-3xl" />
+        <div className="float-d absolute bottom-0 -left-32 w-[400px] h-[400px] bg-amber-600/3 rounded-full blur-3xl" />
+      </div>
       <div className="container mx-auto px-6">
         <ScrollReveal>
           <div className="text-center mb-12">
@@ -111,7 +117,7 @@ const Projects: React.FC = () => {
               delay={index * 100}
               direction={index % 2 === 0 ? 'left' : 'right'}
             >
-              <TiltCard className="bg-zinc-800/40 border border-zinc-700/50 rounded-xl p-6 hover:border-amber-400/30 h-full flex flex-col">
+              <TiltCard className="card-glow bg-zinc-800/40 border border-zinc-700/50 rounded-xl p-6 hover:border-amber-400/30 h-full flex flex-col">
                 <div className="flex items-start justify-between mb-3">
                   <h3 className="text-lg font-bold text-white group-hover:text-amber-400 transition-colors duration-200">
                     {project.title}
@@ -136,7 +142,7 @@ const Projects: React.FC = () => {
                   {project.tags.map((tag, i) => (
                     <span
                       key={i}
-                      className="bg-amber-400/10 text-amber-300 border border-amber-400/20 px-2.5 py-0.5 rounded text-xs font-mono"
+                      className="shimmer-tag bg-amber-400/10 text-amber-300 border border-amber-400/20 px-2.5 py-0.5 rounded text-xs font-mono"
                     >
                       {tag}
                     </span>

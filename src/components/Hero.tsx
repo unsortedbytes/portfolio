@@ -21,10 +21,19 @@ const Hero: React.FC = () => {
             id="home"
             className="min-h-screen flex items-center justify-center bg-zinc-950 relative overflow-hidden"
         >
-            {/* Subtle ambient glow */}
+            {/* Premium background layers */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <div className="absolute -top-1/2 -left-1/4 w-96 h-96 bg-amber-500/8 rounded-full blur-3xl" />
-                <div className="absolute -bottom-1/2 -right-1/4 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl" />
+                {/* Dot grid */}
+                <div className="absolute inset-0 dot-grid opacity-50" />
+                {/* Grain texture */}
+                <div className="absolute inset-0 grain" />
+                {/* Floating gradient orbs */}
+                <div className="float-a absolute -top-40 -left-40 w-[700px] h-[700px] bg-amber-500/6 rounded-full blur-3xl" />
+                <div className="float-b absolute -bottom-56 -right-40 w-[600px] h-[600px] bg-amber-400/5 rounded-full blur-3xl" />
+                <div className="float-c absolute top-1/3 right-1/5 w-[350px] h-[350px] bg-amber-600/4 rounded-full blur-3xl" />
+                <div className="float-d absolute bottom-1/4 left-1/4 w-[280px] h-[280px] bg-amber-500/3 rounded-full blur-3xl" />
+                {/* Horizontal accent line */}
+                <div className="absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-amber-500/8 to-transparent" />
             </div>
 
             <div className="container mx-auto px-6 py-20 text-center relative z-10">
@@ -61,7 +70,7 @@ const Hero: React.FC = () => {
                                 const el = document.getElementById("projects");
                                 if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: "smooth" });
                             }}
-                            className="bg-amber-400 text-zinc-950 px-7 py-2.5 rounded-lg font-semibold hover:bg-amber-300 transition-colors duration-200 text-sm"
+                            className="btn-3d bg-amber-400 text-zinc-950 px-7 py-2.5 rounded-lg font-semibold hover:bg-amber-300 text-sm"
                         >
                             View My Work
                         </a>

@@ -75,8 +75,14 @@ const GithubIcon = () => (
 
 const ProjectsPage: React.FC = () => {
     return (
-        <div className="min-h-screen bg-zinc-950">
-            <div className="max-w-5xl mx-auto px-6 pt-32 pb-8">
+        <div className="min-h-screen bg-zinc-950 relative overflow-hidden">
+            {/* Background */}
+            <div className="absolute inset-0 pointer-events-none">
+                <div className="absolute inset-0 dot-grid opacity-30" />
+                <div className="float-a absolute top-0 right-0 w-[600px] h-[600px] bg-amber-500/5 rounded-full blur-3xl" />
+                <div className="float-c absolute bottom-0 left-0 w-[500px] h-[500px] bg-amber-600/3 rounded-full blur-3xl" />
+            </div>
+            <div className="max-w-5xl mx-auto px-6 pt-32 pb-8 relative z-10">
                 {/* Page header */}
                 <ScrollReveal direction="fade">
                     <div className="mb-16">
@@ -135,7 +141,7 @@ const ProjectsPage: React.FC = () => {
                                             href={project.liveUrl}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="inline-flex items-center gap-2 bg-amber-400 hover:bg-amber-300 text-zinc-950 font-semibold text-xs px-5 py-2 rounded-full transition-colors duration-200"
+                                            className="btn-3d inline-flex items-center gap-2 bg-amber-400 hover:bg-amber-300 text-zinc-950 font-bold text-xs px-6 py-2.5 rounded-full"
                                         >
                                             <ExternalIcon />
                                             Open Live
@@ -144,7 +150,7 @@ const ProjectsPage: React.FC = () => {
                                             href={project.github}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="inline-flex items-center gap-2 text-zinc-500 hover:text-zinc-300 text-xs font-mono transition-colors duration-200"
+                                            className="inline-flex items-center gap-2 border border-zinc-700 hover:border-amber-400/40 text-zinc-500 hover:text-amber-400 text-xs font-mono px-4 py-2.5 rounded-full transition-all duration-200"
                                         >
                                             <GithubIcon />
                                             Source

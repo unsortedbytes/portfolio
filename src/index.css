@@ -80,3 +80,114 @@
   transform-style: preserve-3d;
   will-change: transform;
 }
+
+/* ── Dot grid background ─────────────────────────── */
+.dot-grid {
+  background-image: radial-gradient(circle, rgba(255,94,26,0.12) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* ── Floating orb keyframes ──────────────────────── */
+@keyframes orb-a {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(50px, -40px) scale(1.08); }
+  66%       { transform: translate(-30px, 22px) scale(0.94); }
+}
+@keyframes orb-b {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(-45px, 30px) scale(0.93); }
+  66%       { transform: translate(28px, -18px) scale(1.07); }
+}
+.float-a { animation: orb-a 14s ease-in-out infinite; }
+.float-b { animation: orb-b 18s ease-in-out infinite; }
+.float-c { animation: orb-a 22s ease-in-out infinite reverse; }
+.float-d { animation: orb-b 26s ease-in-out infinite reverse; }
+
+/* ── Shimmer sweep on hover ──────────────────────── */
+@keyframes shimmer-x {
+  from { transform: translateX(-200%); }
+  to   { transform: translateX(300%); }
+}
+.shimmer-tag {
+  position: relative;
+  overflow: hidden;
+}
+.shimmer-tag::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  width: 50%;
+  background: linear-gradient(90deg, transparent, rgba(255,94,26,0.25), transparent);
+  transform: translateX(-200%);
+}
+.shimmer-tag:hover::after {
+  animation: shimmer-x 0.55s ease forwards;
+}
+
+/* ── Card ambient glow ───────────────────────────── */
+.card-glow {
+  transition: box-shadow 0.4s ease, border-color 0.4s ease;
+}
+.card-glow:hover {
+  box-shadow:
+    0 0 0 1px rgba(255,94,26,0.18),
+    0 0 28px rgba(255,94,26,0.09),
+    0 24px 48px rgba(0,0,0,0.35);
+}
+
+/* ── Gradient flowing text ───────────────────────── */
+@keyframes gradient-flow {
+  0%, 100% { background-position: 0% center; }
+  50%       { background-position: 100% center; }
+}
+.gradient-text {
+  background: linear-gradient(90deg, #FF5E1A, #FF8C5A, #FF5E1A);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-flow 3s ease infinite;
+}
+
+/* ── 3D press button ─────────────────────────────── */
+.btn-3d {
+  box-shadow: 0 4px 0 #C03B00;
+  transition: transform 0.1s ease, box-shadow 0.1s ease, background-color 0.2s ease;
+}
+.btn-3d:hover {
+  box-shadow: 0 6px 0 #C03B00;
+  transform: translateY(-1px);
+}
+.btn-3d:active {
+  box-shadow: 0 1px 0 #C03B00;
+  transform: translateY(3px);
+}
+
+/* ── Noise grain texture ─────────────────────────── */
+.grain::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Reveal clip animation ───────────────────────── */
+@keyframes clip-reveal {
+  from { clip-path: inset(0 100% 0 0); }
+  to   { clip-path: inset(0 0% 0 0); }
+}
+.clip-reveal { animation: clip-reveal 1s cubic-bezier(0.16,1,0.3,1) both; }
+
+/* ── Timeline line draw ──────────────────────────── */
+@keyframes line-grow {
+  from { transform: scaleY(0); }
+  to   { transform: scaleY(1); }
+}
+.timeline-line {
+  transform-origin: top;
+  animation: line-grow 1.2s cubic-bezier(0.16,1,0.3,1) both;
+}

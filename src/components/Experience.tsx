@@ -46,8 +46,14 @@ const Experience: React.FC = () => {
     ];
 
     return (
-        <section id="experience" className="py-24 bg-zinc-950">
-            <div className="container mx-auto px-6">
+        <section id="experience" className="py-24 bg-zinc-950 relative overflow-hidden">
+            {/* Background layers */}
+            <div className="absolute inset-0 pointer-events-none">
+                <div className="absolute inset-0 dot-grid opacity-20" />
+                <div className="float-b absolute top-1/4 -right-40 w-[500px] h-[500px] bg-amber-500/4 rounded-full blur-3xl" />
+            </div>
+
+            <div className="container mx-auto px-6 relative z-10">
                 <ScrollReveal>
                     <div className="text-center mb-12">
                         <h2 className="text-4xl font-bold text-white mb-3">Experience</h2>
@@ -55,10 +61,17 @@ const Experience: React.FC = () => {
                     </div>
                 </ScrollReveal>
 
-                <div className="max-w-3xl mx-auto space-y-4">
+                <div className="max-w-3xl mx-auto space-y-4 relative">
+                    {/* Animated timeline line */}
+                    <div className="absolute left-0 top-0 bottom-0 w-px hidden sm:block overflow-hidden -translate-x-6">
+                        <div className="timeline-line h-full bg-gradient-to-b from-amber-400/60 via-amber-400/20 to-transparent" />
+                    </div>
+
                     {experiences.map((exp, index) => (
                         <ScrollReveal key={index} delay={index * 120} direction={index % 2 === 0 ? 'left' : 'right'}>
-                            <div className="group bg-zinc-900 border border-zinc-800 rounded-xl p-6 hover:border-amber-400/30 transition-colors duration-300">
+                            <div className="card-glow group bg-zinc-900 border border-zinc-800 rounded-xl p-6 hover:border-amber-400/30 transition-colors duration-300 relative">
+                                {/* Timeline dot */}
+                                <div className="absolute -left-9 top-7 w-2.5 h-2.5 rounded-full bg-amber-400/60 border border-amber-400/30 hidden sm:block" />
                                 {/* Top row */}
                                 <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4">
                                     <div>
@@ -89,7 +102,7 @@ const Experience: React.FC = () => {
                                     {exp.tags.map((tag, i) => (
                                         <span
                                             key={i}
-                                            className="bg-zinc-800 text-zinc-300 border border-zinc-700 px-2.5 py-0.5 rounded text-xs font-mono"
+                                            className="shimmer-tag bg-zinc-800 text-zinc-300 border border-zinc-700 px-2.5 py-0.5 rounded text-xs font-mono"
                                         >
                                             {tag}
                                         </span>
