@@ -1,6 +1,7 @@
 import React from "react";
 import ScrollReveal from "./ScrollReveal";
 import CardNetwork from "./CardNetwork";
+import CircuitBg from "./CircuitBg";
 
 const Experience: React.FC = () => {
     const experiences = [
@@ -50,7 +51,7 @@ const Experience: React.FC = () => {
         <section id="experience" className="py-24 bg-zinc-950 relative overflow-hidden">
             {/* Background */}
             <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute inset-0 dot-grid opacity-20" />
+                <CircuitBg className="opacity-[0.6]" />
                 <div className="float-b absolute top-1/4 -right-40 w-[500px] h-[500px] bg-amber-500/4 rounded-full blur-3xl" />
             </div>
 

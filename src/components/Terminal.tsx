@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import WaveBg from "./WaveBg";
 
 interface TerminalLine {
     type: "command" | "output" | "error";
@@ -421,8 +422,11 @@ const Terminal: React.FC = () => {
 
     return (
         <section id="terminal" className="py-24 bg-zinc-950 relative overflow-hidden">
-            {/* Ambient Background Glow */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-amber-600/5 rounded-full blur-[160px] pointer-events-none" />
+            {/* Background */}
+            <div className="absolute inset-0 pointer-events-none">
+                <WaveBg className="opacity-[0.6]" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-amber-600/5 rounded-full blur-[160px]" />
+            </div>
 
             <div className="container mx-auto px-6 relative z-10">
                 <div className="text-center mb-12">

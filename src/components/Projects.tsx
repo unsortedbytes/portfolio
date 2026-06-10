@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import ScrollReveal from './ScrollReveal';
 import CardNetwork from './CardNetwork';
+import StarfieldBg from './StarfieldBg';
 
 const projects = [
   {
@@ -104,7 +105,7 @@ const Projects: React.FC = () => {
     <section id="projects" className="py-24 bg-zinc-900 relative overflow-hidden">
       {/* Background layers */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute inset-0 dot-grid opacity-20" />
+        <StarfieldBg className="opacity-[0.65]" />
         <div className="float-b absolute -top-32 -right-32 w-[500px] h-[500px] bg-amber-500/4 rounded-full blur-3xl" />
         <div className="float-d absolute bottom-0 -left-32 w-[400px] h-[400px] bg-amber-600/3 rounded-full blur-3xl" />
       </div>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import ScrollReveal from './ScrollReveal';
+import RippleBg from './RippleBg';
 
 const SCRAMBLE_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%&*';
 
@@ -88,7 +89,7 @@ const Contact: React.FC = () => {
     <section id="contact" className="py-24 bg-zinc-900 relative overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute inset-0 dot-grid opacity-20" />
+        <RippleBg className="opacity-[0.6]" />
         <div className="float-a absolute -bottom-32 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-amber-500/5 rounded-full blur-3xl" />
       </div>
       <div className="container mx-auto px-6 relative z-10">
