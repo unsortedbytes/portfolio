@@ -1,85 +1,78 @@
 import React from "react";
 import GitHubActivity from "./GitHubActivity";
+import ScrollReveal from "./ScrollReveal";
 
 const About: React.FC = () => {
     return (
-        <section id="about" className="py-20 bg-zinc-900">
+        <section id="about" className="py-24 bg-zinc-900">
             <div className="container mx-auto px-6">
-                <h2 className="text-4xl font-bold text-center text-white mb-12">
-                    About Me
-                </h2>
-                <div className="max-w-4xl mx-auto">
-                    <div className="bg-zinc-900/40 backdrop-blur-xl border border-zinc-800/50 rounded-lg p-8 shadow-2xl hover:shadow-amber-500/20 transition duration-500">
-                        <p className="text-lg text-zinc-300 mb-6">
-                            I'm a passionate Software Developer currently
-                            pursuing my B.Tech in Mechanical Engineering at{" "}
-                            <span className="font-semibold text-amber-400">
-                                IIT Kharagpur
-                            </span>{" "}
-                            (GPA: 7.64/10). I specialize in backend development
-                            and building scalable, production-ready
-                            applications.
-                        </p>
-                        <p className="text-lg text-zinc-300 mb-6">
-                            Currently working as a{" "}
-                            <span className="font-semibold">
-                                Software Developer - Backend
-                            </span>{" "}
-                            at House of Amber, where I've improved application
-                            response times by 30% and handle over 1 million
-                            monthly requests using Python, FastAPI, and AWS
-                            infrastructure.
-                        </p>
-                        <div className="grid md:grid-cols-2 gap-6 mt-8">
-                            <div className="bg-zinc-800 border border-zinc-800 p-6 rounded-lg shadow-xl hover:shadow-amber-500/20 transition duration-300">
-                                <h3 className="text-xl font-semibold text-amber-400 mb-3">
-                                    🎓 Education
-                                </h3>
-                                <p className="text-zinc-200">
-                                    B.Tech, IIT Kharagpur
-                                </p>
-                                <p className="text-sm text-zinc-400">
-                                    Nov 2021 - April 2025
-                                </p>
-                            </div>
-                            <div className="bg-zinc-800 border border-zinc-800 p-6 rounded-lg shadow-xl hover:shadow-amber-500/20 transition duration-300">
-                                <h3 className="text-xl font-semibold text-amber-400 mb-3">
-                                    💼 Experience
-                                </h3>
-                                <p className="text-zinc-200">
-                                    Backend Developer
-                                </p>
-                                <p className="text-sm text-zinc-400">
-                                    House of Amber
-                                </p>
-                            </div>
-                            <div className="bg-zinc-800 border border-zinc-800 p-6 rounded-lg shadow-xl hover:shadow-amber-500/20 transition duration-300">
-                                <h3 className="text-xl font-semibold text-amber-400 mb-3">
-                                    🎯 Focus Areas
-                                </h3>
-                                <p className="text-zinc-200">
-                                    Backend Development
-                                </p>
-                                <p className="text-sm text-zinc-400">
-                                    Cloud Infrastructure
-                                </p>
-                            </div>
-                            <div className="bg-zinc-800 border border-zinc-800 p-6 rounded-lg shadow-xl hover:shadow-amber-500/20 transition duration-300">
-                                <h3 className="text-xl font-semibold text-amber-400 mb-3">
-                                    🎲 Fun Fact
-                                </h3>
-                                <p className="text-zinc-200">Rust is winning</p>
-                                <p className="text-sm text-zinc-400">
-                                    Creating bugs since 2022
-                                </p>
-                            </div>
+                <ScrollReveal>
+                    <div className="text-center mb-12">
+                        <h2 className="text-4xl font-bold text-white mb-3">About Me</h2>
+                        <div className="h-0.5 w-12 bg-amber-400 mx-auto rounded-full" />
+                    </div>
+                </ScrollReveal>
+
+                <div className="max-w-4xl mx-auto space-y-8">
+                    <ScrollReveal delay={100}>
+                        <div className="bg-zinc-800/40 border border-zinc-700/50 rounded-xl p-8">
+                            <p className="text-zinc-300 leading-relaxed mb-4">
+                                I'm a software developer focused on backend engineering and
+                                systems programming, currently completing my B.Tech in Mechanical
+                                Engineering at{" "}
+                                <span className="text-amber-400 font-medium">IIT Kharagpur</span>{" "}
+                                (GPA: 7.64/10). I gravitate toward problems where performance and
+                                reliability actually matter.
+                            </p>
+                            <p className="text-zinc-300 leading-relaxed">
+                                At{" "}
+                                <span className="text-amber-400 font-medium">House of Amber</span>,
+                                I design and ship backend services built on Python, FastAPI, and
+                                AWS. Outside of work, I write Rust for CLI tooling and explore
+                                systems internals.
+                            </p>
                         </div>
+                    </ScrollReveal>
+
+                    {/* Info grid */}
+                    <div className="grid sm:grid-cols-2 gap-4">
+                        {[
+                            {
+                                label: "Education",
+                                primary: "IIT Kharagpur",
+                                secondary: "B.Tech Mechanical Engineering · 2021–2025",
+                            },
+                            {
+                                label: "Currently",
+                                primary: "House of Amber Advisory",
+                                secondary: "Software Developer · Mumbai, Onsite",
+                            },
+                            {
+                                label: "Focus",
+                                primary: "Backend & Systems",
+                                secondary: "Python · Rust · Cloud Infrastructure",
+                            },
+                            {
+                                label: "For fun",
+                                primary: "Creating bugs since 2022",
+                                secondary: "Rust is winning",
+                            },
+                        ].map((item, i) => (
+                            <ScrollReveal key={item.label} delay={150 + i * 80}>
+                                <div className="bg-zinc-800/40 border border-zinc-700/50 rounded-xl p-5 hover:border-amber-400/30 transition-colors duration-300">
+                                    <p className="text-xs font-mono text-amber-400 uppercase tracking-widest mb-2">
+                                        {item.label}
+                                    </p>
+                                    <p className="text-white font-semibold">{item.primary}</p>
+                                    <p className="text-zinc-400 text-sm mt-0.5">{item.secondary}</p>
+                                </div>
+                            </ScrollReveal>
+                        ))}
                     </div>
 
-                    {/* GitHub Activity */}
-                    <div className="mt-8">
+                    <ScrollReveal delay={300}>
                         <GitHubActivity />
-                    </div>
+                    </ScrollReveal>
                 </div>
             </div>
         </section>

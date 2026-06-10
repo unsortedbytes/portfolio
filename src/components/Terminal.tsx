@@ -127,7 +127,7 @@ const Terminal: React.FC = () => {
             addOutput([
                 "Contact Information:",
                 "  Email: adi.bytes@gmail.com",
-                "  Phone: +91-6207985419",
+                "  Phone: +91-9609854195",
                 "  GitHub: github.com/unsortedbytes",
                 "  LinkedIn: linkedin.com/in/aditya-kumar-b7b79b22b/",
                 "",
@@ -425,11 +425,9 @@ const Terminal: React.FC = () => {
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-amber-600/5 rounded-full blur-[160px] pointer-events-none" />
 
             <div className="container mx-auto px-6 relative z-10">
-                <div className="text-center mb-16">
-                    <h2 className="text-4xl md:text-6xl font-black text-white mb-6 tracking-tighter uppercase italic">
-                        The <span className="text-amber-500">Dev</span> Log
-                    </h2>
-                    <div className="h-1 w-24 bg-amber-500 mx-auto rounded-full" />
+                <div className="text-center mb-12">
+                    <h2 className="text-4xl font-bold text-white mb-3">Terminal</h2>
+                    <div className="h-0.5 w-12 bg-amber-400 mx-auto rounded-full" />
                 </div>
 
                 {/* The "Notebook" Container */}

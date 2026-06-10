@@ -1,81 +1,48 @@
-import React, { useEffect, useState } from 'react';
-
-interface Particle {
-  x: number;
-  y: number;
-  size: number;
-  opacity: number;
-}
+import { useEffect, useRef } from 'react';
 
 const CursorEffect: React.FC = () => {
-  const [particles, setParticles] = useState<Particle[]>([]);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const dotRef = useRef<HTMLDivElement>(null);
+  const ringRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePos({ x: e.clientX, y: e.clientY });
-      
-      const newParticle: Particle = {
-        x: e.clientX,
-        y: e.clientY,
-        size: Math.random() * 5 + 3,
-        opacity: 1,
-      };
+    const dot = dotRef.current;
+    const ring = ringRef.current;
+    if (!dot || !ring) return;
 
-      setParticles((prev) => [...prev.slice(-15), newParticle]);
+    const move = (e: MouseEvent) => {
+      dot.style.transform = `translate(${e.clientX - 3}px, ${e.clientY - 3}px)`;
+      ring.style.transform = `translate(${e.clientX - 14}px, ${e.clientY - 14}px)`;
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
+    const grow = () => ring.classList.add('scale-150');
+    const shrink = () => ring.classList.remove('scale-150');
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setParticles((prev) =>
-        prev
-          .map((p) => ({ ...p, opacity: p.opacity - 0.05 }))
-          .filter((p) => p.opacity > 0)
-      );
-    }, 50);
+    const interactables = document.querySelectorAll('a, button, [role="button"], input, textarea');
+    interactables.forEach(el => {
+      el.addEventListener('mouseenter', grow);
+      el.addEventListener('mouseleave', shrink);
+    });
 
-    return () => clearInterval(interval);
+    window.addEventListener('mousemove', move, { passive: true });
+    return () => {
+      window.removeEventListener('mousemove', move);
+      interactables.forEach(el => {
+        el.removeEventListener('mouseenter', grow);
+        el.removeEventListener('mouseleave', shrink);
+      });
+    };
   }, []);
 
   return (
     <>
-      {/* Custom cursor dot */}
       <div
-        className="fixed pointer-events-none z-50 mix-blend-difference"
-        style={{
-          left: mousePos.x,
-          top: mousePos.y,
-          transform: 'translate(-50%, -50%)',
-        }}
-      >
-        <div className="w-4 h-4 bg-amber-400 rounded-full blur-sm animate-pulse" />
-      </div>
-
-      {/* Particle trail */}
-      {particles.map((particle, index) => (
-        <div
-          key={index}
-          className="fixed pointer-events-none z-40"
-          style={{
-            left: particle.x,
-            top: particle.y,
-            opacity: particle.opacity,
-            transform: 'translate(-50%, -50%)',
-          }}
-        >
-          <div
-            className="bg-gradient-to-r from-amber-400 to-orange-400 rounded-full blur-sm"
-            style={{
-              width: particle.size,
-              height: particle.size,
-            }}
-          />
-        </div>
-      ))}
+        ref={dotRef}
+        className="fixed top-0 left-0 pointer-events-none z-[9999] w-1.5 h-1.5 bg-amber-400 rounded-full will-change-transform"
+      />
+      <div
+        ref={ringRef}
+        className="fixed top-0 left-0 pointer-events-none z-[9998] w-7 h-7 border border-amber-400/50 rounded-full will-change-transform transition-all duration-200 ease-out"
+      />
     </>
   );
 };

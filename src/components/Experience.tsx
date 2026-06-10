@@ -1,12 +1,13 @@
 import React from "react";
+import ScrollReveal from "./ScrollReveal";
 
 const Experience: React.FC = () => {
     const experiences = [
         {
             title: "Software Developer",
             company: "House of Amber Advisory Private Limited",
-            location: "Mumbai, India - Onsite",
-            period: "May 2025 - Present",
+            location: "Mumbai, India · Onsite",
+            period: "May 2025 – Present",
             type: "Full-time",
             description: [
                 "Designed and scaled high-performance backend services using Python and FastAPI for enterprise-grade applications",
@@ -19,21 +20,21 @@ const Experience: React.FC = () => {
         {
             title: "Software Developer Intern",
             company: "Mahi Mahi Marketing Solution",
-            location: "Bangalore, India - Remote",
-            period: "Mar 2025 - Jun 2025",
+            location: "Bangalore, India · Remote",
+            period: "Mar 2025 – Jun 2025",
             type: "Internship",
             description: [
-                "Developed Maven.ai, an AI-powered marketing platform automating marketing generation using Generative AI",
+                "Developed Maven.ai, an AI-powered marketing platform automating content generation using Generative AI",
                 "Optimized AI models and integrated detailed analytics to improve content quality and campaign effectiveness",
                 "Designed intuitive user interfaces with structured workflows to enhance usability and content management",
             ],
-            tags: ["AI", "Python", "Generative AI", "Analytics"],
+            tags: ["Python", "Generative AI", "Analytics"],
         },
         {
-            title: "Software Developer Intern",
+            title: "Full Stack Developer Intern",
             company: "Dhruva Capital",
-            location: "Kolkata, India - Remote",
-            period: "Feb 2025 - Apr 2025",
+            location: "Kolkata, India · Remote",
+            period: "Feb 2025 – Apr 2025",
             type: "Internship",
             description: [
                 "Built SwanSathi.com, a gold-loan management platform with authentication, loan processing, and real-time tracking",
@@ -45,61 +46,57 @@ const Experience: React.FC = () => {
     ];
 
     return (
-        <section id="experience" className="py-20 bg-zinc-950">
+        <section id="experience" className="py-24 bg-zinc-950">
             <div className="container mx-auto px-6">
-                <h2 className="text-4xl font-bold text-center text-white mb-12">
-                    Experience
-                </h2>
-                <div className="max-w-4xl mx-auto space-y-8">
+                <ScrollReveal>
+                    <div className="text-center mb-12">
+                        <h2 className="text-4xl font-bold text-white mb-3">Experience</h2>
+                        <div className="h-0.5 w-12 bg-amber-400 mx-auto rounded-full" />
+                    </div>
+                </ScrollReveal>
+
+                <div className="max-w-3xl mx-auto space-y-4">
                     {experiences.map((exp, index) => (
-                        <div
-                            key={index}
-                            className="bg-zinc-900 rounded-lg shadow-lg p-6 hover:shadow-xl transition duration-300"
-                        >
-                            <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
-                                <div>
-                                    <h3 className="text-2xl font-bold text-white">
-                                        {exp.title}
-                                    </h3>
-                                    <p className="text-lg text-amber-400 font-semibold">
-                                        {exp.company}
-                                    </p>
-                                    <p className="text-sm text-zinc-400 mt-1">
-                                        {exp.location}
-                                    </p>
-                                </div>
-                                <div className="mt-2 md:mt-0">
-                                    <span className="inline-block bg-amber-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
-                                        {exp.type}
-                                    </span>
-                                    <p className="text-zinc-300 text-sm mt-1">
-                                        {exp.period}
-                                    </p>
-                                </div>
-                            </div>
-                            <ul className="space-y-2 mb-4">
-                                {exp.description.map((item, i) => (
-                                    <li key={i} className="flex items-start">
-                                        <span className="text-amber-400 mr-2">
-                                            ▹
+                        <ScrollReveal key={index} delay={index * 120}>
+                            <div className="group bg-zinc-900 border border-zinc-800 rounded-xl p-6 hover:border-amber-400/30 transition-colors duration-300">
+                                {/* Top row */}
+                                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4">
+                                    <div>
+                                        <h3 className="text-lg font-bold text-white">{exp.title}</h3>
+                                        <p className="text-amber-400 font-medium text-sm">{exp.company}</p>
+                                        <p className="text-zinc-500 text-xs mt-0.5">{exp.location}</p>
+                                    </div>
+                                    <div className="flex sm:flex-col sm:items-end gap-2 shrink-0">
+                                        <span className="text-xs font-mono bg-amber-400/10 text-amber-400 border border-amber-400/20 px-2.5 py-1 rounded-md">
+                                            {exp.type}
                                         </span>
-                                        <span className="text-zinc-200">
+                                        <span className="text-zinc-400 text-xs font-mono">{exp.period}</span>
+                                    </div>
+                                </div>
+
+                                {/* Bullets */}
+                                <ul className="space-y-1.5 mb-4">
+                                    {exp.description.map((item, i) => (
+                                        <li key={i} className="flex items-start gap-2 text-sm text-zinc-300">
+                                            <span className="text-amber-400 mt-1 shrink-0 text-xs">▸</span>
                                             {item}
+                                        </li>
+                                    ))}
+                                </ul>
+
+                                {/* Tags */}
+                                <div className="flex flex-wrap gap-1.5">
+                                    {exp.tags.map((tag, i) => (
+                                        <span
+                                            key={i}
+                                            className="bg-zinc-800 text-zinc-300 border border-zinc-700 px-2.5 py-0.5 rounded text-xs font-mono"
+                                        >
+                                            {tag}
                                         </span>
-                                    </li>
-                                ))}
-                            </ul>
-                            <div className="flex flex-wrap gap-2">
-                                {exp.tags.map((tag, i) => (
-                                    <span
-                                        key={i}
-                                        className="bg-amber-500/20 text-amber-300 border border-amber-500/30 px-3 py-1 rounded-md text-sm font-medium"
-                                    >
-                                        {tag}
-                                    </span>
-                                ))}
+                                    ))}
+                                </div>
                             </div>
-                        </div>
+                        </ScrollReveal>
                     ))}
                 </div>
             </div>
