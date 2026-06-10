@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useTypingEffect } from "../hooks/useTypingEffect";
+import ParticleNetwork from "./ParticleNetwork";
 
 /* ── Fibonacci spiral particles (deterministic) ── */
 const PHI = (1 + Math.sqrt(5)) / 2;
@@ -97,8 +98,11 @@ const Hero: React.FC = () => {
         >
             {/* ── Background layers ── */}
             <div className="absolute inset-0 pointer-events-none">
-                {/* Mouse-reactive dot grid */}
-                <div ref={gridRef} className="absolute inset-0 grid-interactive opacity-60" />
+                {/* Particle network — base layer */}
+                <ParticleNetwork count={68} linkDist={160} speed={0.35} className="opacity-70" />
+
+                {/* Mouse-reactive dot grid on top */}
+                <div ref={gridRef} className="absolute inset-0 grid-interactive opacity-40" />
 
                 {/* Grain */}
                 <div className="absolute inset-0 grain" />
