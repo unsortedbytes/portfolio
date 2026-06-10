@@ -493,7 +493,6 @@ const Terminal: React.FC = () => {
                                         onKeyDown={handleKeyDown}
                                         className="flex-1 bg-transparent text-amber-400 outline-none border-none caret-amber-500 font-bold"
                                         spellCheck={false}
-                                        autoFocus
                                         placeholder="type 'help'..."
                                     />
                                 </form>

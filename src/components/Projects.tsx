@@ -68,10 +68,13 @@ const TiltCard: React.FC<TiltCardProps> = ({ children, className = '' }) => {
     const el = ref.current;
     if (!el) return;
     const r = el.getBoundingClientRect();
-    const x = (e.clientX - r.left) / r.width - 0.5;
-    const y = (e.clientY - r.top) / r.height - 0.5;
-    el.style.transform = `perspective(700px) rotateY(${x * 12}deg) rotateX(${-y * 12}deg) translateZ(6px)`;
-    el.style.boxShadow = `${-x * 12}px ${-y * 12}px 32px rgba(255,94,26,0.08)`;
+    const nx = (e.clientX - r.left) / r.width - 0.5;
+    const ny = (e.clientY - r.top) / r.height - 0.5;
+    const px = e.clientX - r.left;
+    const py = e.clientY - r.top;
+    el.style.transform = `perspective(700px) rotateY(${nx * 14}deg) rotateX(${-ny * 14}deg) translateZ(8px)`;
+    el.style.boxShadow = `${-nx * 14}px ${-ny * 14}px 40px rgba(255,94,26,0.1)`;
+    el.style.background = `radial-gradient(280px circle at ${px}px ${py}px, rgba(255,94,26,0.07), transparent 60%), #252525`;
   };
 
   const onLeave = () => {
@@ -79,6 +82,7 @@ const TiltCard: React.FC<TiltCardProps> = ({ children, className = '' }) => {
     if (!el) return;
     el.style.transform = 'perspective(700px) rotateY(0deg) rotateX(0deg) translateZ(0)';
     el.style.boxShadow = 'none';
+    el.style.background = '';
   };
 
   return (

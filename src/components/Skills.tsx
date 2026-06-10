@@ -30,6 +30,11 @@ const CountUp: React.FC<{ to: number; suffix?: string; duration?: number }> = ({
   return <span ref={ref}>{value}{suffix}</span>;
 };
 
+const ALL_SKILLS = [
+  'Rust', 'Python', 'TypeScript', 'Go', 'C++', 'FastAPI', 'Django', 'React', 'Next.js',
+  'Node.js', 'PostgreSQL', 'MongoDB', 'Redis', 'Docker', 'Kubernetes', 'AWS', 'Linux', 'Nginx', 'Git', 'Prisma',
+];
+
 const Skills: React.FC = () => {
   const categories = [
     {
@@ -66,7 +71,19 @@ const Skills: React.FC = () => {
         <div className="float-c absolute bottom-0 left-0 w-[350px] h-[350px] bg-amber-600/3 rounded-full blur-3xl" />
       </div>
 
-      <div className="container mx-auto px-6 relative z-10">
+      {/* Marquee ticker */}
+      <div className="absolute top-0 left-0 right-0 overflow-hidden border-b border-zinc-800/60 py-2.5 bg-zinc-950/80 backdrop-blur-sm z-20">
+        <div className="marquee-track flex gap-6 w-max">
+          {[...ALL_SKILLS, ...ALL_SKILLS].map((skill, i) => (
+            <span key={i} className="text-xs font-mono text-zinc-600 hover:text-amber-400 transition-colors duration-200 whitespace-nowrap flex items-center gap-2">
+              <span className="w-1 h-1 rounded-full bg-amber-400/40 shrink-0" />
+              {skill}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      <div className="container mx-auto px-6 relative z-10 pt-10">
         <ScrollReveal>
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-white mb-3">Skills</h2>
