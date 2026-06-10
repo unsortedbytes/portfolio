@@ -1,5 +1,42 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import ScrollReveal from './ScrollReveal';
+
+const SCRAMBLE_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%&*';
+
+const ScrambleHeading: React.FC<{ text: string }> = ({ text }) => {
+  const ref = useRef<HTMLHeadingElement>(null);
+  const [display, setDisplay] = useState(text);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) return;
+      observer.disconnect();
+      let frame = 0;
+      const total = text.length * 4;
+      const id = setInterval(() => {
+        setDisplay(
+          text.split('').map((char, i) => {
+            if (char === ' ') return ' ';
+            if (frame > i * 4) return char;
+            return SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)];
+          }).join('')
+        );
+        frame++;
+        if (frame >= total) { setDisplay(text); clearInterval(id); }
+      }, 28);
+    }, { threshold: 0.6 });
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [text]);
+
+  return (
+    <h2 ref={ref} className="text-4xl font-bold text-white mb-3 font-mono tracking-wider">
+      {display}
+    </h2>
+  );
+};
 
 const links = [
   {
@@ -52,7 +89,7 @@ const Contact: React.FC = () => {
       <div className="container mx-auto px-6">
         <ScrollReveal>
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-white mb-3">Get In Touch</h2>
+            <ScrambleHeading text="Get In Touch" />
             <div className="h-0.5 w-12 bg-amber-400 mx-auto rounded-full" />
           </div>
         </ScrollReveal>

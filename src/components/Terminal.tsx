@@ -457,7 +457,7 @@ const Terminal: React.FC = () => {
                             {/* Scrollable output */}
                             <div
                                 ref={terminalRef}
-                                className="flex-1 overflow-y-auto p-6 font-mono text-sm leading-relaxed"
+                                className="flex-1 overflow-y-auto p-6 font-mono text-sm leading-relaxed scanlines"
                                 onClick={() => inputRef.current?.focus()}
                             >
                                 {history.map((line, index) => (

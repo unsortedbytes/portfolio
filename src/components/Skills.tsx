@@ -52,7 +52,7 @@ const Skills: React.FC = () => {
 
         <div className="max-w-4xl mx-auto space-y-4">
           {categories.map((cat, index) => (
-            <ScrollReveal key={cat.label} delay={index * 80}>
+            <ScrollReveal key={cat.label} delay={index * 80} direction="scale">
               <div className="bg-zinc-900 border border-zinc-800 rounded-xl p-6 hover:border-amber-400/20 transition-colors duration-300">
                 <p className="text-xs font-mono text-amber-400 uppercase tracking-widest mb-3">
                   {cat.label}

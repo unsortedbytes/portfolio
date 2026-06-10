@@ -57,7 +57,7 @@ const Experience: React.FC = () => {
 
                 <div className="max-w-3xl mx-auto space-y-4">
                     {experiences.map((exp, index) => (
-                        <ScrollReveal key={index} delay={index * 120}>
+                        <ScrollReveal key={index} delay={index * 120} direction={index % 2 === 0 ? 'left' : 'right'}>
                             <div className="group bg-zinc-900 border border-zinc-800 rounded-xl p-6 hover:border-amber-400/30 transition-colors duration-300">
                                 {/* Top row */}
                                 <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4">

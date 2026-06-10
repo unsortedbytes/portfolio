@@ -6,9 +6,9 @@ const NAV_ITEMS = [
     { name: "About",        href: "#about",      type: "anchor" },
     { name: "Experience",   href: "#experience", type: "anchor" },
     { name: "Projects",     href: "#projects",   type: "anchor" },
-    { name: "Live Projects",href: "/projects",   type: "route"  },
     { name: "Skills",       href: "#skills",     type: "anchor" },
     { name: "Contact",      href: "#contact",    type: "anchor" },
+    { name: "Live Projects",href: "/projects",   type: "route"  },
 ];
 
 const NAVBAR_HEIGHT = 80;
