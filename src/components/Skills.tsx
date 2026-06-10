@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import ScrollReveal from './ScrollReveal';
 import CardNetwork from './CardNetwork';
+import HexGrid from './HexGrid';
 
 const CountUp: React.FC<{ to: number; suffix?: string; duration?: number }> = ({
   to, suffix = '', duration = 1400,
@@ -67,9 +68,9 @@ const Skills: React.FC = () => {
     <section id="skills" className="py-24 bg-zinc-950 relative overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute inset-0 dot-grid opacity-25" />
-        <div className="float-a absolute top-0 right-0 w-[450px] h-[450px] bg-amber-500/4 rounded-full blur-3xl" />
-        <div className="float-c absolute bottom-0 left-0 w-[350px] h-[350px] bg-amber-600/3 rounded-full blur-3xl" />
+        <HexGrid className="opacity-[0.65]" />
+        <div className="float-a absolute top-0 right-0 w-[450px] h-[450px] bg-amber-500/5 rounded-full blur-3xl" />
+        <div className="float-c absolute bottom-0 left-0 w-[350px] h-[350px] bg-amber-600/4 rounded-full blur-3xl" />
       </div>
 
       {/* Marquee ticker */}
