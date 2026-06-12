@@ -5,6 +5,19 @@ import StarfieldBg from './StarfieldBg';
 
 const projects = [
   {
+    title: 'Job Application Tracker',
+    year: '2026',
+    description: 'Chrome extension that auto-logs every job application to Google Sheets — click Apply, Gemini parses the page, a row appears. No manual input, ever.',
+    features: [
+      'Detects apply buttons across LinkedIn, Naukri, Indeed, Greenhouse, Lever, Workday',
+      'Two-phase tracking: logs only on actual submit, not abandoned forms',
+      'Gemini-powered extraction with retry, fallback models, and offline queue',
+      'Smart dedupe across devices via extension storage and the sheet itself',
+    ],
+    tags: ['Chrome Extension', 'JavaScript', 'Gemini AI', 'Google Sheets'],
+    github: 'https://github.com/unsortedbytes/random_projects/tree/main/job-tracker',
+  },
+  {
     title: 'Portmon',
     year: '2025',
     description: 'High-performance Rust CLI tool to inspect active TCP/UDP ports and map them to Linux processes',
