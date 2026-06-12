@@ -64,6 +64,18 @@ const liveProjects: LiveProject[] = [
         tags: ["Various"],
         accent: "from-emerald-500/50 to-teal-400/30",
     },
+    {
+        id: "5",
+        num: "05",
+        title: "Job Application Tracker",
+        description:
+            "Chrome extension that auto-logs every job application to Google Sheets — click Apply, Gemini parses the page, a row appears. No manual input, ever.",
+        category: "Chrome Extension",
+        liveUrl: "https://github.com/unsortedbytes/random_projects/tree/main/job-tracker",
+        github: "https://github.com/unsortedbytes/random_projects/tree/main/job-tracker",
+        tags: ["JavaScript", "Gemini AI", "Google Sheets"],
+        accent: "from-rose-500/50 to-pink-400/30",
+    },
 ];
 
 const GithubIcon = () => (
