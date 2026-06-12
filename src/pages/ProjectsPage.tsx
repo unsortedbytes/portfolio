@@ -4,8 +4,6 @@ import ScrollReveal from "../components/ScrollReveal";
 import CardNetwork from "../components/CardNetwork";
 
 interface LiveProject {
-    id: string;
-    num: string;
     title: string;
     description: string;
     category: string;
@@ -15,10 +13,19 @@ interface LiveProject {
     accent: string;
 }
 
+// Newest first — add new projects at the top; numbering is automatic.
 const liveProjects: LiveProject[] = [
     {
-        id: "1",
-        num: "01",
+        title: "Job Application Tracker",
+        description:
+            "Chrome extension that auto-logs every job application to Google Sheets — click Apply, Gemini parses the page, a row appears. No manual input, ever.",
+        category: "Chrome Extension",
+        liveUrl: "https://github.com/unsortedbytes/random_projects/tree/main/job-tracker",
+        github: "https://github.com/unsortedbytes/random_projects/tree/main/job-tracker",
+        tags: ["JavaScript", "Gemini AI", "Google Sheets"],
+        accent: "from-rose-500/50 to-pink-400/30",
+    },
+    {
         title: "Rripple.in",
         description:
             "Official website for Rripple — a digital media and AI solutions company. Modern, responsive web presence built for performance and brand impact.",
@@ -29,8 +36,6 @@ const liveProjects: LiveProject[] = [
         accent: "from-amber-400/60 to-orange-500/40",
     },
     {
-        id: "2",
-        num: "02",
         title: "IIT KGP Campus Map",
         description:
             "Interactive map of the IIT Kharagpur campus — a BTP project helping students and visitors navigate the sprawling 2100-acre campus.",
@@ -41,8 +46,6 @@ const liveProjects: LiveProject[] = [
         accent: "from-blue-500/50 to-cyan-400/30",
     },
     {
-        id: "3",
-        num: "03",
         title: "Gemini Chatbot",
         description:
             "Clean chatbot demo powered by Google Gemini API — showcasing conversational AI integration in a minimal, fast web interface.",
@@ -53,8 +56,6 @@ const liveProjects: LiveProject[] = [
         accent: "from-violet-500/50 to-purple-400/30",
     },
     {
-        id: "4",
-        num: "04",
         title: "Random Projects",
         description:
             "A growing collection of small experimental builds — born from random thoughts, weekend experiments, and the itch to just make something.",
@@ -63,18 +64,6 @@ const liveProjects: LiveProject[] = [
         github: "https://github.com/unsortedbytes/random_projects",
         tags: ["Various"],
         accent: "from-emerald-500/50 to-teal-400/30",
-    },
-    {
-        id: "5",
-        num: "05",
-        title: "Job Application Tracker",
-        description:
-            "Chrome extension that auto-logs every job application to Google Sheets — click Apply, Gemini parses the page, a row appears. No manual input, ever.",
-        category: "Chrome Extension",
-        liveUrl: "https://github.com/unsortedbytes/random_projects/tree/main/job-tracker",
-        github: "https://github.com/unsortedbytes/random_projects/tree/main/job-tracker",
-        tags: ["JavaScript", "Gemini AI", "Google Sheets"],
-        accent: "from-rose-500/50 to-pink-400/30",
     },
 ];
 
@@ -166,7 +155,7 @@ const ProjectsPage: React.FC = () => {
                 <div className="grid sm:grid-cols-2 gap-5">
                     {liveProjects.map((project, i) => (
                         <ScrollReveal
-                            key={project.id}
+                            key={project.title}
                             delay={i * 120}
                             direction={i % 2 === 0 ? 'left' : 'right'}
                         >
@@ -194,7 +183,7 @@ const ProjectsPage: React.FC = () => {
                                             </span>
                                         </div>
                                         <span className="text-5xl font-black leading-none font-mono select-none text-zinc-800 group-hover:text-zinc-700 transition-colors duration-500">
-                                            {project.num}
+                                            {String(i + 1).padStart(2, '0')}
                                         </span>
                                     </div>
 
