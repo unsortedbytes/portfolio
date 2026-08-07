@@ -324,3 +324,50 @@
   50%       { opacity: 0; }
 }
 .blink { animation: blink-cursor 1s step-end infinite; }
+
+/* ── Terminal: line entry ────────────────────────── */
+@keyframes term-line-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.term-line { animation: term-line-in 0.22s cubic-bezier(0.16,1,0.3,1) both; }
+
+/* ── Terminal: prompt caret glow ─────────────────── */
+@keyframes prompt-glow {
+  0%, 100% { opacity: 1;   text-shadow: 0 0 6px rgba(255,94,26,0.55); }
+  50%      { opacity: 0.5; text-shadow: 0 0 0 rgba(255,94,26,0); }
+}
+.prompt-glow { animation: prompt-glow 1.4s ease-in-out infinite; }
+
+/* ── Terminal: frame breathing glow ──────────────── */
+@keyframes frame-glow {
+  0%, 100% { box-shadow: 0 0 0 1px rgba(255,94,26,0.06), 0 25px 60px -20px rgba(0,0,0,0.9); }
+  50%      { box-shadow: 0 0 0 1px rgba(255,94,26,0.16), 0 25px 70px -18px rgba(255,94,26,0.10); }
+}
+.frame-glow { animation: frame-glow 5s ease-in-out infinite; }
+
+/* ── Terminal: status LED ────────────────────────── */
+@keyframes led-pulse {
+  0%, 100% { opacity: 1;   box-shadow: 0 0 0 0 rgba(255,94,26,0.5); }
+  70%      { opacity: 0.6; box-shadow: 0 0 0 5px rgba(255,94,26,0); }
+}
+.led-pulse { animation: led-pulse 2s ease-out infinite; }
+
+/* ── Terminal: command row slide-in ──────────────── */
+@keyframes cmd-row-in {
+  from { opacity: 0; transform: translateX(10px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+.cmd-row { animation: cmd-row-in 0.35s cubic-bezier(0.16,1,0.3,1) both; }
+
+/* ── Terminal: sweep across the header on load ───── */
+@keyframes header-sweep {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(300%); }
+}
+.header-sweep { animation: header-sweep 3.5s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .term-line, .cmd-row, .frame-glow, .led-pulse,
+  .prompt-glow, .header-sweep { animation: none !important; }
+}
