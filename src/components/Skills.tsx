@@ -33,7 +33,7 @@ const CountUp: React.FC<{ to: number; suffix?: string; duration?: number }> = ({
 };
 
 const ALL_SKILLS = [
-  'Rust', 'Python', 'TypeScript', 'Go', 'C++', 'FastAPI', 'Django', 'React', 'Next.js',
+  'Rust', 'Python', 'TypeScript', 'Go', 'C++', 'gRPC', 'FastAPI', 'Django', 'React', 'Next.js',
   'Node.js', 'PostgreSQL', 'MongoDB', 'Redis', 'Docker', 'Kubernetes', 'AWS', 'Linux', 'Nginx', 'Git', 'Prisma',
 ];
 
@@ -45,22 +45,22 @@ const Skills: React.FC = () => {
     },
     {
       label: 'Frameworks',
-      skills: ['FastAPI', 'Django', 'Node.js', 'Express', 'React', 'Next.js'],
+      skills: ['FastAPI', 'Django', 'Node.js', 'Express', 'React', 'Next.js', 'NextAuth.js', 'ShadCN'],
     },
     {
       label: 'Databases & ORMs',
-      skills: ['PostgreSQL', 'MongoDB', 'Redis', 'SQLite', 'SQL', 'Prisma', 'Sequelize'],
+      skills: ['PostgreSQL', 'MongoDB', 'MySQL', 'Redis', 'SQLite', 'Prisma', 'Sequelize'],
     },
     {
       label: 'DevOps & Cloud',
-      skills: ['Docker', 'Kubernetes', 'AWS (S3, EC2, Lambda, RDS)', 'Linux', 'Nginx', 'Git'],
+      skills: ['Docker', 'Kubernetes', 'AWS (S3, EC2, Lambda, RDS)', 'Linux', 'Nginx', 'Git', 'CI/CD'],
     },
   ];
 
   const achievements = [
     { stat: 2, suffix: '%', label: 'JEE Advanced rank', detail: 'Top 2% among 1.6 lakh aspirants nationwide' },
-    { stat: 1000, suffix: '+', label: 'Codeforces rating', detail: 'Algorithmic problem-solving skills' },
-    { stat: 200, suffix: '+', label: 'DSA problems', detail: 'Across LeetCode, Codeforces & more' },
+    { stat: 1400, suffix: '+', label: 'Codeforces rating', detail: 'Algorithmic problem-solving skills' },
+    { stat: 500, suffix: '+', label: 'DSA problems', detail: 'Across LeetCode, Codeforces & more' },
     { stat: 3, suffix: '+', label: 'Production systems', detail: 'Deployed & maintained real-world apps' },
   ];
 

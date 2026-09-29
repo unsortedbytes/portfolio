@@ -5,6 +5,32 @@ import StarfieldBg from './StarfieldBg';
 
 const projects = [
   {
+    title: 'Distributed File Storage',
+    year: '2026',
+    description: 'Peer-to-peer file storage network in Go with decentralized node discovery, data replication, and redundancy',
+    features: [
+      'Decentralized node discovery with data replication across peers',
+      'Pluggable store abstraction for multi-node consistency',
+      'Fault-tolerant state management for high availability',
+      'Gossip-based peer routing for resilient mesh communication',
+    ],
+    tags: ['Golang', 'P2P Networks', 'Distributed Systems'],
+    github: 'https://github.com/unsortedbytes/distributed_file_storage',
+  },
+  {
+    title: 'ZKP Authentication Service',
+    year: '2026',
+    description: 'Zero-knowledge proof authentication in Rust using the Chaum-Pedersen protocol — prove you know the secret without ever sending it',
+    features: [
+      'Chaum-Pedersen ZKP over 1024-bit RFC 5114 Diffie-Hellman groups',
+      'Challenge-response gRPC service built with tonic/prost',
+      'Proof validation and secure session token issuance',
+      'Dockerized with Compose; cryptographic ops fully unit-tested',
+    ],
+    tags: ['Rust', 'gRPC', 'Cryptography', 'Docker'],
+    github: 'https://github.com/unsortedbytes/zero-knowledge-proofs-in-rust',
+  },
+  {
     title: 'Job Application Tracker',
     year: '2026',
     description: 'Chrome extension that auto-logs every job application to Google Sheets — click Apply, Gemini parses the page, a row appears. No manual input, ever.',
@@ -28,7 +54,7 @@ const projects = [
       'Exposes detailed port, PID, protocol, and listening state',
     ],
     tags: ['Rust', 'Linux', 'Networking', 'CLI'],
-    github: 'https://github.com/unsortedbytes/portmon',
+    github: 'https://github.com/unsortedbytes/Portmon',
   },
   {
     title: 'University Library Management',

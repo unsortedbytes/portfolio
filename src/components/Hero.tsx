@@ -55,7 +55,7 @@ const FloatingCode: React.FC = () => {
 
 /* ── Quick stats ── */
 const STATS = [
-    { n: "200+", label: "DSA solved" },
+    { n: "500+", label: "DSA solved" },
     { n: "5+",   label: "live apps"  },
     { n: "3",    label: "work roles" },
 ];

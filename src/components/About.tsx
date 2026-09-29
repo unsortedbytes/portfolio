@@ -25,8 +25,8 @@ const About: React.FC = () => {
                         <CardNetwork className="opacity-[0.2]" />
                             <p className="text-zinc-300 leading-relaxed mb-4">
                                 I'm a software developer focused on backend engineering and
-                                systems programming, currently completing my B.Tech in Mechanical
-                                Engineering at{" "}
+                                systems programming, with a B.Tech in Mechanical Engineering
+                                from{" "}
                                 <span className="text-amber-400 font-medium">IIT Kharagpur</span>{" "}
                                 (GPA: 7.64/10). I gravitate toward problems where performance and
                                 reliability actually matter.
@@ -35,8 +35,8 @@ const About: React.FC = () => {
                                 At{" "}
                                 <span className="text-amber-400 font-medium">House of Amber</span>,
                                 I design and ship backend services built on Python, FastAPI, and
-                                AWS. Outside of work, I write Rust for CLI tooling and explore
-                                systems internals.
+                                AWS. Outside of work, I build distributed systems in Go, write Rust
+                                for CLI tooling and cryptography, and explore systems internals.
                             </p>
                         </div>
                     </ScrollReveal>
@@ -57,7 +57,7 @@ const About: React.FC = () => {
                             {
                                 label: "Focus",
                                 primary: "Backend & Systems",
-                                secondary: "Python · Rust · Cloud Infrastructure",
+                                secondary: "Python · Rust · Go · Distributed Systems",
                             },
                             {
                                 label: "For fun",
