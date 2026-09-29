@@ -371,3 +371,21 @@
   .term-line, .cmd-row, .frame-glow, .led-pulse,
   .prompt-glow, .header-sweep { animation: none !important; }
 }
+
+/* ── Boot intro ── */
+.boot-screen { transition: opacity 0.6s ease, filter 0.6s ease, transform 0.6s ease; }
+.boot-exit { opacity: 0; filter: blur(6px); transform: scale(1.03); }
+@keyframes boot-scan {
+  from { top: -6rem; }
+  to   { top: 100%; }
+}
+.boot-scan {
+  background: linear-gradient(to bottom, transparent, rgba(255,94,26,0.06), transparent);
+  animation: boot-scan 2.2s linear infinite;
+}
+.hud-corner {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-color: rgba(255,94,26,0.5);
+}
