@@ -61,7 +61,7 @@ const Navbar: React.FC = () => {
                             isScrolled ? "text-amber-400" : "text-white"
                         }`}
                     >
-                        <img src="/favicon.svg" alt="Logo" className="w-7 h-7" />
+                        <img src="/logo.png" alt="UnsortedBytes logo" className="w-9 h-9 rounded-md" />
                         <span className="hidden sm:inline text-lg tracking-wide">UNSORTEDBYTES</span>
                         <span className="sm:hidden">UB</span>
                     </Link>
