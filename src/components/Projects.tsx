@@ -57,6 +57,18 @@ const projects = [
     github: 'https://github.com/unsortedbytes/Portmon',
   },
   {
+    title: 'IIT Kharagpur Interactive Map & Navigation',
+    year: '2025',
+    description: 'Research project: interactive campus-wide navigation system for IIT Kharagpur with route discovery and location search',
+    features: [
+      'Campus-wide interactive map with location search',
+      'Graph-based pathfinding to compute optimal routes',
+      'Covers academic blocks, hostels, and facilities',
+      'Route discovery across the entire campus',
+    ],
+    tags: ['Research', 'Next.js', 'Geospatial Systems', 'Algorithms'],
+  },
+  {
     title: 'University Library Management',
     year: '2024',
     description: 'Production-grade library management system with secure APIs and role-based access control',
@@ -195,6 +207,7 @@ const Projects: React.FC = () => {
                   ))}
                 </div>
 
+                {project.github && (
                 <div className="mt-auto pt-2 border-t border-zinc-700/50">
                   <a
                     href={project.github}
@@ -208,6 +221,7 @@ const Projects: React.FC = () => {
                     View Source
                   </a>
                 </div>
+                )}
               </TiltCard>
             </ScrollReveal>
           ))}
